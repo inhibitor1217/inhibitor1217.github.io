@@ -8,7 +8,7 @@ title: "작업환경 설정"
 
 ### NPM Package
 
-먼저 콘솔에서 필요한 package들을 설치합니다. Tyescript와 webpack은 개발 과정에서만 필요하고 빌드된 버전에서는 필요하지 않기 때문에 --save-dev 옵션으로 설치해 줍니다.
+먼저 콘솔에서 필요한 package들을 설치합니다. Typescript와 webpack은 개발 과정에서만 필요하고 빌드된 버전에서는 필요하지 않기 때문에 --save-dev 옵션으로 설치해 줍니다.
 
 ```
 $ npm init
@@ -17,9 +17,9 @@ $ npm install --save-dev typescript ts-loader webpack webpack-cli @types/webgl2
 
 ### HTML 및 CSS 파일 작성
 
-WebGL에서 활용할 Canvas element를 담은 HTML 페이지를 만들어 보겠습니다. 작업할 디렉토리에 index.html 파일을 작성해 주세요.
+WebGL에서 활용할 Canvas element를 담은 HTML 페이지를 만들어 보겠습니다. 작업할 디렉토리에 `index.html` 파일을 작성해 주세요.
 
-여기에서 \<canvas>는 WebGL이 작동할 공간이며, ./dist/bundle.js 는 webpack을 통해 우리가 작성한 모든 코드가 묶일 script입니다.
+여기에서 `<canvas>`는 WebGL이 작동할 공간이며, `dist/bundle.js` 는 webpack을 통해 우리가 작성한 모든 코드가 묶일 script입니다.
 
 ```
 <!DOCTYPE html>
@@ -38,7 +38,7 @@ WebGL에서 활용할 Canvas element를 담은 HTML 페이지를 만들어 보�
 </html>
 ```
 
-그리고 style.css 파일 또한 작성합니다. index.html이나 style.css 파일은 원하는 대로 변경하셔도 상관 없습니다.
+그리고 `style.css` 파일 또한 작성합니다. `index.html`이나 `style.css` 파일은 원하는 대로 변경하셔도 상관 없습니다.
 
 ```
 @import url(http://fonts.googleapis.com/css?family=Ubuntu);
@@ -80,9 +80,9 @@ p {
 
 ### Webpack 설정하기
 
-Webpack은 Javscript 어플리케이션에서 require, import 등 서로 의존 관계가 있는 여러 개의 파일을 하나로 bundling해주기 위해 사용합니다.
+Webpack은 Javscript 어플리케이션에서 `require`, `import`를 통해 서로 의존 관계가 있는 여러 개의 파일을 하나로 bundling해주기 위해 사용합니다.
 
-이 튜토리얼에서는 Typescript를 사용하기 때문에, .ts 확장자를 가진 파일들을 Javascript로 로드하고 묶어 ./dist/bundle.js 파일로 합쳐줄 것입니다. webpack.config.js 파일을 생성하고 다음 내용을 작성합니다.
+이 튜토리얼에서는 Typescript를 사용하기 때문에, .ts 확장자를 가진 파일들을 Javascript로 로드하고 묶어 `dist/bundle.js` 파일로 합쳐줄 것입니다. `webpack.config.js` 파일을 생성하고 다음 내용을 작성합니다.
 
 ```
 var path = require('path');
@@ -113,13 +113,13 @@ module.exports = {
 }
 ```
 
-Entry file은 src/main.ts로, output file은 dist/bundle.js로 설정합니다. 이 output file은 앞서 작성한 index.html에서 참조하고 있습니다. 또한, Typescript로 작성된 파일을 불러오기 위해 module과 resolve property에 관련 내용을 추가해 줍니다. Webpack에 대한 더 자세한 설명은 아래 링크를 참조하시기 바랍니다.
+Entry file은 `src/main.ts`로, output file은 `dist/bundle.js`로 설정합니다. 이 output file은 앞서 작성한 `index.html`에서 참조하고 있습니다. 또한, Typescript로 작성된 파일을 불러오기 위해 `module`과 `resolve` property에 관련 내용을 추가해 줍니다. Webpack에 대한 더 자세한 설명은 아래 링크를 참조하시기 바랍니다.
 
 > [Webpack 더 알아보기](https://webpack.js.org/concepts)
 
 ### Typescript 설정하기
 
-tsconfig.json 파일을 생성하고 다음 내용을 작성합니다. 이 파일은 ts-loader 모듈이 Typescript 코드를 Javascript로 번역할 때 참조할 설정들을 담고 있습니다.
+`tsconfig.json` 파일을 생성하고 다음 내용을 작성합니다. 이 파일은 ts-loader 모듈이 Typescript 코드를 Javascript로 번역할 때 참조할 설정들을 담고 있습니다.
 
 ```
 {
@@ -127,7 +127,7 @@ tsconfig.json 파일을 생성하고 다음 내용을 작성합니다. 이 파�
         "outDir": "./dist/",
         "noImplicitAny": true,
         "module": "es6",
-        "target": "es5",
+        "target": "es2017",
         "allowJs": true
     }
 }
@@ -135,14 +135,14 @@ tsconfig.json 파일을 생성하고 다음 내용을 작성합니다. 이 파�
 
 ### Webpack으로 bundling하기
 
-이제 entry file로 설정한 src/main.ts 파일을 작성해 줍니다. 지금은 단순히 콘솔 창에 Hello, world!만 출력하는 코드로 작성하겠습니다.
+이제 entry file로 설정한 `src/main.ts` 파일을 작성해 줍니다. 지금은 단순히 콘솔 창에 Hello, world!만 출력하는 코드로 작성하겠습니다.
 
 ```
 console.log('Hello, world!');
 ```
 
-다음으로는 package.json 파일의 다음 부분을 수정해 줍니다.
-이를 통해 "npm run build" 명령으로 webpack에게 bundling을 시키는 명령인, "webpack --config webpack.config.js"을 대신 수행할 수 있습니다.
+다음으로는 `package.json` 파일의 다음 부분을 수정해 줍니다.
+이를 통해 `$ npm run build` 명령으로 webpack에게 bundling을 시키는 명령인, `$ webpack --config webpack.config.js`을 대신 수행할 수 있습니다.
 
 ```
 {
@@ -155,7 +155,7 @@ console.log('Hello, world!');
 }
 ```
 
-이제 다음 명령을 콘솔에서 실행하면 dist/bundle.js 파일이 생성된 것을 볼 수 있습니다.
+이제 다음 명령을 콘솔에서 실행하면 `dist/bundle.js` 파일이 생성된 것을 볼 수 있습니다.
 
 ```
 $ npm run build
