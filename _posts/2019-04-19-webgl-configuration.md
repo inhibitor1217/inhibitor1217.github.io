@@ -178,3 +178,7 @@ $ http-server -c-1
 이제 브라우저를 켜고 localhost:8080 주소에 접속하면 다음과 같은 화면이 표시되는 것을 볼 수 있습니다.
 
 ![preview]({{site.url}}/images/00-configuration-preview.PNG)
+
+### 링크
+
+[GitHub Repository](https://github.com/inhibitor1217/webgl-tutorials/tree/master/tutorials/00-configuration)
