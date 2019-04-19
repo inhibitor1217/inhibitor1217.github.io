@@ -1,3 +1,7 @@
+---
+layout: post
+title: "WebGL 소개, 스택, OpenGL과 비교"
+---
 ## [WebGL] WebGL 소개, 스택, OpenGL과 비교
 
 ![webgl_logo](WebGL_100px_June16_180_75.png)
