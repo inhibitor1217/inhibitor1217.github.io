@@ -14,14 +14,14 @@ WebGL은 OpenGL을 기반으로 하고 있습니다. OpenGL과 마찬가지로 K
 
 > WebGL is a cross-platform, royalty-free web standard for a low-level 3D graphics API based on OpenGL ES, exposed to ECMAScript via the HTML5 Canvas element. Developers familiar with OpenGL ES 2.0 will recognize WebGL as a Shader-based API using GLSL, with constructs that are semantically similar to those of the underlying OpenGL ES API. It stays very close to the OpenGL ES specification, with some concessions made for what developers expect out of memory-managed languages such as JavaScript. WebGL 1.0 exposes the OpenGL ES 2.0 feature set; WebGL 2.0 exposes the OpenGL ES 3.0 API.  
 WebGL brings plugin-free 3D to the web, implemented right into the browser. Major browser vendors Apple (Safari), Google (Chrome), Microsoft (Edge), and Mozilla (Firefox) are members of the WebGL Working Group.  
-출처: https://www.khronos.org/webgl/
+출처: [https://www.khronos.org/webgl/](https://www.khronos.org/webgl/)
 
 요약하면,
 
 - 브라우저의 **HTML 5 Canvas element** 위에 화면을 그려냅니다.
     - **Javascript**를 사용합니다. Javascript는 garbage collection을 수행하기 때문에 low-level 언어인 C, C++의 OpenGL과는 조금 다를 수 있습니다.
     - 브라우저에 따라 WebGL (WebGL2) 지원 여부가 서로 다릅니다. 단, 지원하는 브라우저에 대해서는 동일한 코드로 같은 결과를 얻을 수 있습니다.
-        - WebGL, WebGL 2 지원 브라우저: https://caniuse.com/#feat=webgl
+        - [WebGL, WebGL 2 지원 브라우저](https://caniuse.com/#feat=webgl)
 - WebGL 2는 OpenGL ES 3.0 버전을 기반으로 하고 있습니다. Shader의 경우 GLSL ES 3.00 버전을 사용합니다.
 
 제가 생각하는 WebGL의 장점은 다음과 같습니다.
