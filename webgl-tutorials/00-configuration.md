@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "작업환경 설정"
+author: inhibitor1217
+date: 2019-04-19 19:00:00
 ---
 ## [WebGL] 00. 작업환경 설정
 
