@@ -1,12 +1,10 @@
 ---
 layout: post
 title: "WebGL 소개, 스택, OpenGL과 비교"
-author: inhibitor1217
-date: 2019-04-19 19:00:00
 ---
 ## [WebGL] WebGL 소개, 스택, OpenGL과 비교
 
-![webgl_logo](WebGL_100px_June16_180_75.png)
+![webgl_logo]({{site.url}}/assets/images/WebGL_100px_June16_180_75.png)
 
 ### 그래픽스 라이브러리?
 

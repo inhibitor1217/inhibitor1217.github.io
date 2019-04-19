@@ -6,5 +6,8 @@ url: 'https://inhibitor1217.github.io'
 baseurl: /
 
 title: inhibitor.log
-logo: ./logo.jpg
+logo: ./assets/images/logo.jpg
 favicon: 
+
+posts:
+  author: inhibitor1217

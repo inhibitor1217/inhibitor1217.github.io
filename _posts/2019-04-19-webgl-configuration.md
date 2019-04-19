@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "작업환경 설정"
-author: inhibitor1217
-date: 2019-04-19 19:00:00
 ---
 ## [WebGL] 00. 작업환경 설정
 
@@ -179,4 +177,4 @@ $ http-server -c-1
 
 이제 브라우저를 켜고 localhost:8080 주소에 접속하면 다음과 같은 화면이 표시되는 것을 볼 수 있습니다.
 
-![preview](00-configuration-preview.PNG)
+![preview]({{site.url}}/assets/images/00-configuration-preview.PNG)
