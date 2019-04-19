@@ -1,3 +1,10 @@
 theme: jekyll-theme-minimal
+
+paginate: 10
+language: 'en-us'
+url: 'https://inhibitor1217.github.io'
+baseurl: /
+
 title: inhibitor.log
 logo: ./logo.jpg
+favicon: 
