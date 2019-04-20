@@ -4,6 +4,8 @@ title: "작업환경 설정"
 ---
 ## [WebGL] 00. 작업환경 설정
 
+> [WebGL 튜토리얼 목록]({{site.url}}/2019/04/19/webgl-tutorials)
+
 이 튜토리얼 시리즈는 WebGL 2.0 버전을 기반으로 하고 있습니다. 또, 개발 과정에서 Typescript와 webpack을 사용하고 있습니다.
 
 ### NPM Package
@@ -21,7 +23,7 @@ WebGL에서 활용할 Canvas element를 담은 HTML 페이지를 만들어 보�
 
 여기에서 `<canvas>`는 WebGL이 작동할 공간이며, `dist/bundle.js` 는 webpack을 통해 우리가 작성한 모든 코드가 묶일 script입니다.
 
-```
+```html
 <!DOCTYPE html>
 <html>
     <head>
@@ -40,7 +42,7 @@ WebGL에서 활용할 Canvas element를 담은 HTML 페이지를 만들어 보�
 
 그리고 `style.css` 파일 또한 작성합니다. `index.html`이나 `style.css` 파일은 원하는 대로 변경하셔도 상관 없습니다.
 
-```
+```css
 @import url(http://fonts.googleapis.com/css?family=Ubuntu);
 
 html, body {
@@ -84,7 +86,7 @@ Webpack은 Javscript 어플리케이션에서 `require`, `import`를 통해 서�
 
 이 튜토리얼에서는 Typescript를 사용하기 때문에, .ts 확장자를 가진 파일들을 Javascript로 로드하고 묶어 `dist/bundle.js` 파일로 합쳐줄 것입니다. `webpack.config.js` 파일을 생성하고 다음 내용을 작성합니다.
 
-```
+```javascript
 var path = require('path');
 
 module.exports = {
@@ -121,7 +123,7 @@ Entry file은 `src/main.ts`로, output file은 `dist/bundle.js`로 설정합니�
 
 `tsconfig.json` 파일을 생성하고 다음 내용을 작성합니다. 이 파일은 ts-loader 모듈이 Typescript 코드를 Javascript로 번역할 때 참조할 설정들을 담고 있습니다.
 
-```
+```json
 {
     "compilerOptions": {
         "outDir": "./dist/",
@@ -144,7 +146,7 @@ console.log('Hello, world!');
 다음으로는 `package.json` 파일의 다음 부분을 수정해 줍니다.
 이를 통해 `$ npm run build` 명령으로 webpack에게 bundling을 시키는 명령인, `$ webpack --config webpack.config.js`을 대신 수행할 수 있습니다.
 
-```
+```javascript
 {
     ...,
     "scripts": {

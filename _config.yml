@@ -1,5 +1,7 @@
 theme: jekyll-theme-minimal
 
+highlighter: rouge
+
 paginate: 10
 language: 'en-us'
 url: 'https://inhibitor1217.github.io'

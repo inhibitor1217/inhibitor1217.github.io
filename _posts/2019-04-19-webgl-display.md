@@ -4,13 +4,15 @@ title: "Display (Canvas, Viewport)"
 ---
 ## [WebGL] 01. Display (Canvas, Viewport)
 
+> [WebGL 튜토리얼 목록]({{site.url}}/2019/04/19/webgl-tutorials)
+
 OpenGL이나 DirectX와 같은 그래픽 라이브러리는 화면을 출력할 window를 OS에게 요청합니다. 그러나, WebGL은 HTML Canvas element를 사용하기 때문에 canvas의 rendering context를 불러오는 것으로 간단히 화면을 생성할 수 있습니다.
 
 ### Canvas에서 Rendering Context 불러오기
 
 `src/main.ts`에 다음 코드를 적어주세요. NPM의 @types/webgl2 module을 제대로 설치했다면, `WebGL2RenderingContext`라는 타입이 문제 없이 컴파일 될 것으로 예상됩니다.
 
-```
+```typescript
 const canvas: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById('canvas');
 const gl: WebGL2RenderingContext = canvas.getContext('webgl2');
 ```
@@ -25,7 +27,7 @@ WebGL 2를 지원하지 않는 브라우저(IE, Edge)의 경우 `canvas.getConte
 
 `src/global.ts`에 다음 내용을 작성하세요.
 
-```
+```typescript
 export default (
     () => {
         const st: {[key: string]: any} = {};
@@ -48,7 +50,7 @@ export default (
 
 다시 `src/main.ts`에서 이 모듈을 `import`하고, `gl`을 전역변수로 저장합니다.
 
-```
+```typescript
 import global from 'global';
 ...
 if (gl) {
@@ -71,7 +73,7 @@ WebGL에서 viewport는 다음과 같이 설정할 수 있습니다.
 gl.viewport(x, y, width, height)
 ```
 `x, y`는 전체 window에서 viewport의 왼쪽 아래 좌표이며, `width`와 `height`는 viewport의 너비와 높이입니다. Canvas 전체를 viewport로 하는 경우에는 다음과 같이 쓰면 됩니다.
-```
+```typescript
 gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 ```
 
@@ -83,7 +85,7 @@ gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 
 `src/main.ts`에 다음 코드를 작성하세요.
 
-```
+```typescript
 ...
 if (gl) {
     ...
