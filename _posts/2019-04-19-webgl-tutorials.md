@@ -10,7 +10,9 @@ title: "WebGL 튜토리얼"
 - 01: [Display (Canvas, Viewport)]({{site.url}}/2019/04/19/webgl-display)
 
 ### Basics
-- 02: [Vertex Array Object]({{site.url}}/2019/04/20/webgl-vao.html)
+- 02: 직사각형 그리기
+    - 02-1: [Buffer Object, Vertex Array Object]({{site.url}}/2019/04/20/webgl-vao)
+    - 02-2: 레이어 쌓기, Mesh
 - 03: Index Buffer
 - 04: Shader (GLSL)
 - 05: Texture
