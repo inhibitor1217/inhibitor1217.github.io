@@ -13,7 +13,7 @@ title: "WebGL 튜토리얼"
 - 02: 직사각형 그리기
     - 02-1: [Buffer Object, Vertex Array Object]({{site.url}}/2019/04/20/webgl-vao)
     - 02-2: [레이어 쌓기, Mesh]({{site.url}}/2019/04/20/webgl-mesh)
-- 03: Index Buffer
+- 03: [인덱스 버퍼]({{site.url}}/2019/04/21/webgl-ibo)
 - 04: Shader (GLSL)
 - 05: Texture
 - 06: 변환 (Transformation)
