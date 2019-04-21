@@ -102,7 +102,7 @@ if (gl) {
 
 http-server로 로컬 서버를 켜고 localhost:8080에 접속하면 다음과 같은 결과를 볼 수 있습니다. 브라우저가 WebGL 2를 지원하는지 확인해 주세요.
 
-![preview]({{site.url}}/images/01-display-preview.png)
+[Preview]({{site.url}}/pages/webgl-tutorials/01-display)
 
 `gl.clearColor`의 색을 바꾸면 화면이 다른 색깔로 변하는지도 확인해 보세요.
 

@@ -177,9 +177,9 @@ $ npm install --global http-server
 $ http-server -c-1
 ```
 
-이제 브라우저를 켜고 localhost:8080 주소에 접속하면 다음과 같은 화면이 표시되는 것을 볼 수 있습니다.
+이제 브라우저를 켜고 t서버 주소에 접속하면 다음과 같은 화면이 표시되는 것을 볼 수 있습니다.
 
-![preview]({{site.url}}/images/00-configuration-preview.PNG)
+[Preview]({{site.url}}/pages/webgl-tutorials/00-configuration)
 
 ### 링크
 
