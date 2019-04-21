@@ -102,7 +102,7 @@ void main() {
 - Shader의 입력과 출력은 `in`과 `out` 키워드로 지정합니다.
     - Vertex shader 코드는 `vec2` 타입의 `position`을 입력으로 받습니다. (직사각형의 vertex attribute로 각 vertex의 2차원 좌표를 VBO에 담았던 것 기억하시죠?) 그리고, 출력으로는 고정된 변수인 `gl_Position`을 `main()` 함수 내에서 계산합니다. 2차원 좌표인 `position`을 *3차원 동차 좌표 (homogenous coordinate)*, 즉 4차원 벡터로 바꾸어 줍니다. 
     - Fragment shader 코드는 출력 변수인 `out_color`를 하얀색`(1, 1, 1, 1)`으로 설정합니다. 즉, 직사각형 내부에 속한 모든 픽셀을 하얀색으로 설정하는 코드입니다.
-    - Vertex shader의 출력 변수가 fragment shader의 입력 변수로 들어오기 때문에, 두 변수의 이름과 타입이 정확히 똑같아야 합니다. 즉, vertex shader에서 `out vec4 x;`와 같이 출력 변수를 설정하면, fragment shader에는 `in vec4 x;`로 적어야 합니다. 올바르게 적지 않으면 나중에 컴파일할 때 에러가 납니다.
+    - Vertex shader의 출력 변수가 fragment shader의 입력 변수로 들어오기 때문에, 두 변수의 이름과 타입이 정확히 똑같아야 합니다. 즉, vertex shader에서 `out vec4 x;`와 같이 출력 변수를 설정하면, fragment shader에는 `in vec4 x;`로 적어야 합니다. 올바르게 적지 않으면 나중에 link할 때 에러가 납니다.
 - Vertex shader에서 입력을 받을 때, `layout(location = 0)`와 같은 선언은 이 입력 변수가 몇 번 vertex attribute에 해당되는지 표시하는 키워드입니다. 앞서 `Mesh` 클래스를 작성할 때, 0번부터 차례로 vertex attribute를 배정했었기 때문에, vertex의 위치가 0번 vertex attribute에 들어있고, 이를 vertex shader에서 받을 수 있습니다. 
 - Fragment shader의 `precision medium float`은 `float`의 정확도를 설정하는 부분으로, 크게 중요하지는 않습니다.
 
