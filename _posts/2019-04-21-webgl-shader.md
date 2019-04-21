@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Shader, GLSL"
+title: "그래픽스 파이프라인, Shader, GLSL"
 ---
-## [WebGL] 04-1. Shader, GLSL
+## [WebGL] 04-1. 그래픽스 파이프라인, Shader, GLSL
 
 > [WebGL 튜토리얼 목록]({{site.url}}/2019/04/19/webgl-tutorials)
 
