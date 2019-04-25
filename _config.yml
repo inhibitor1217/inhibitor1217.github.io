@@ -7,7 +7,7 @@ title:               inhibitor.log
 tagline:             'development log'
 description:         '<p>Computer Graphics, WebGL, Problem Solving</p><a href="https://github.com/inhibitor1217">GitHub Page</a>'
 url:                 http://inhibitor1217.github.io
-baseurl:             ''
+baseurl:             
 paginate:            5
 
 # About/contact
@@ -18,3 +18,6 @@ author:
 
 # Custom vars
 version:             1.0.0
+
+# Posts
+excerpt_separator: <!--more-->

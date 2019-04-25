@@ -8,6 +8,8 @@ title: "[WebGL] 00. 작업환경 설정"
 
 이 튜토리얼 시리즈는 WebGL 2.0 버전을 기반으로 하고 있습니다. 또, 개발 과정에서 Typescript와 webpack을 사용하고 있습니다.
 
+<!--more-->
+
 ### NPM Package
 
 먼저 콘솔에서 필요한 package들을 설치합니다. Typescript와 webpack은 개발 과정에서만 필요하고 빌드된 버전에서는 필요하지 않기 때문에 --save-dev 옵션으로 설치해 줍니다.

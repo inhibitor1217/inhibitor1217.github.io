@@ -8,6 +8,8 @@ title: "[WebGL] 01. Display (Canvas, Viewport)"
 
 OpenGL이나 DirectX와 같은 그래픽 라이브러리는 화면을 출력할 window를 OS에게 요청합니다. 그러나, WebGL은 HTML Canvas element를 사용하기 때문에 canvas의 rendering context를 불러오는 것으로 간단히 화면을 생성할 수 있습니다.
 
+<!--more-->
+
 ### Canvas에서 Rendering Context 불러오기
 
 `src/main.ts`에 다음 코드를 적어주세요. NPM의 @types/webgl2 module을 제대로 설치했다면, `WebGL2RenderingContext`라는 타입이 문제 없이 컴파일 될 것으로 예상됩니다.

@@ -8,6 +8,8 @@ title: "[WebGL] 04-2. Uniform Variables, Material"
 
 이번 튜토리얼에서는 shader를 다루는 WebGL API들을 감싸는 클래스들을 만들어 엔진에 추가합니다. `src/engine/` 디렉토리 내에 `components/Material.ts` 파일과 `shaders/Program.ts` 파일을 생성하세요.
 
+<!--more-->
+
 ```
 .
 ├── src
