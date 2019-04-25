@@ -311,6 +311,10 @@ a.sidebar-nav-item:focus {
 .page,
 .post {
   margin-bottom: 4em;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 3px 3px 0px #9a9a9a33;
 }
 
 /* Blog post or page title */
@@ -330,6 +334,15 @@ a.sidebar-nav-item:focus {
   margin-top: -.5rem;
   margin-bottom: 1rem;
   color: #9a9a9a;
+}
+
+.post-footer {
+  padding-top: 1rem;
+  border-top: 1px #9a9a9a solid;
+}
+.post-footer p {
+  font-size: 16px;
+  text-align: right;
 }
 
 /* Related posts */
