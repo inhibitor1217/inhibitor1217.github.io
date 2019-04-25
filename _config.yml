@@ -1,14 +1,20 @@
-theme: jekyll-theme-minimal
+# Permalinks
+#
+permalink:           pretty
 
-highlighter: rouge
+# Setup
+title:               inhibitor.log
+tagline:             'development log'
+description:         '<p>Computer Graphics, WebGL, Problem Solving</p><a href="https://github.com/inhibitor1217">GitHub Page</a>'
+url:                 http://inhibitor1217.github.io
+baseurl:             ''
+paginate:            5
 
-paginate: 10
-language: 'en-us'
-url: 'https://inhibitor1217.github.io'
-baseurl: /
+# About/contact
+author:
+  name:              inhibitor
+  url:               
+  email:             cytops1217@gmail.com
 
-title: inhibitor.log
-logo: images/logo.jpg
-favicon: images/favicon.png
-
-author: inhibitor1217
+# Custom vars
+version:             1.0.0
