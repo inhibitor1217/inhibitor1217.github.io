@@ -16,6 +16,6 @@ title: "[WebGL] 튜토리얼"
 - 03: [인덱스 버퍼]({{site.url}}/2019/04/21/webgl-ibo)
 - 04: Shader
     - 04-1: [그래픽스 파이프라인, Shader, GLSL]({{site.url}}/2019/04/21/webgl-shader)
-    - 04-2: [Uniform Variables, Material]({{site.url}}/2019/04/23/webgl-material)
+    - 04-2: Uniform Variables, Material
 - 05: Texture
 - 06: 변환 (Transformation)
