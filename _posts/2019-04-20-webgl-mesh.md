@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "레이어 쌓기, Mesh"
+title: "[WebGL] 02-2. 레이어 쌓기, Mesh"
 ---
-## [WebGL] 02-2. 레이어 쌓기, Mesh
+## 레이어 쌓기, Mesh
 
-> [WebGL 튜토리얼 목록]({{site.url}}/2019/04/19/webgl-tutorials)
+> [WebGL 튜토리얼 목록]({{site.url}}/webgl-tutorials)
 
 ### 추상화
 

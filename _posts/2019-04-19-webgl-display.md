@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Display (Canvas, Viewport)"
+title: "[WebGL] 01. Display (Canvas, Viewport)"
 ---
-## [WebGL] 01. Display (Canvas, Viewport)
+## Display (Canvas, Viewport)
 
-> [WebGL 튜토리얼 목록]({{site.url}}/2019/04/19/webgl-tutorials)
+> [WebGL 튜토리얼 목록]({{site.url}}/webgl-tutorials)
 
 OpenGL이나 DirectX와 같은 그래픽 라이브러리는 화면을 출력할 window를 OS에게 요청합니다. 그러나, WebGL은 HTML Canvas element를 사용하기 때문에 canvas의 rendering context를 불러오는 것으로 간단히 화면을 생성할 수 있습니다.
 
