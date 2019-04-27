@@ -180,16 +180,22 @@ export default class Material {
         this._program.stop();
     }
 
-    setUniform1f(variableName: string, v0: number): void {
+    setColor(r: number, g: number, b: number) {
+        this._setUniform3f('color', r, g, b);
+    }
+    
+    getProgram(): Program { return this._program; }
+
+    _setUniform1f(variableName: string, v0: number): void {
         this._gl.uniform1f(this._getUniformLocation(variableName), v0);
     }
-    setUniform2f(variableName: string, v0: number, v1: number): void {
+    _setUniform2f(variableName: string, v0: number, v1: number): void {
         this._gl.uniform2f(this._getUniformLocation(variableName), v0, v1);
     }
-    setUniform3f(variableName: string, v0: number, v1: number, v2: number): void {
+    _setUniform3f(variableName: string, v0: number, v1: number, v2: number): void {
         this._gl.uniform3f(this._getUniformLocation(variableName), v0, v1, v2);
     }
-    setUniform4f(variableName: string, v0: number, v1: number, v2: number, v3: number): void {
+    _setUniform4f(variableName: string, v0: number, v1: number, v2: number, v3: number): void {
         this._gl.uniform4f(this._getUniformLocation(variableName), v0, v1, v2, v3);
     }
 
@@ -198,8 +204,6 @@ export default class Material {
             this._uniformLocations[variableName] = this._gl.getUniformLocation(this._program, variableName);
         return this._uniformLocations[variableName]; 
     }
-
-    getProgram(): Program { return this._program; }
 
 }
 ```
