@@ -16,7 +16,7 @@ title: "[WebGL] 05. Texture"
 
 ![texture-example](https://upload.wikimedia.org/wikipedia/commons/f/f2/Texture_mapping_demonstration_animation.gif)
 
-> 출처: [Wikipedia - Texture](https://en.wikipedia.org/wiki/Texture_mapping)
+> 출처: [Wikipedia - Texture Mapping](https://en.wikipedia.org/wiki/Texture_mapping)
 
 하지만, 텍스쳐는 우리 화면에 그려지는 이미지 뿐만이 아니라 여러 가지 용도로 사용될 수 있습니다. 보통은 텍스쳐에 데이터를 읽고 쓰는 두 가지 용도로 사용됩니다.
 
