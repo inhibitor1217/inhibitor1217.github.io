@@ -194,21 +194,17 @@ else
 
 ### Material 클래스 수정
 
-다음으로는, 이전에 작성한 `Material` 클래스가 텍스쳐를 지원하도록 수정합니다. `Material`에 텍스쳐를 설정할 수 있도록 `_texture` attribute와 get/set 메소드를 만들어 줍니다. 또, 기존 코드에서 색깔을 설정하는 부분도 비슷하게 작동하도록 `_color` attribute를 설정하는 방법으로 바꿔 줍니다.
+다음으로는, 이전에 작성한 `Material` 클래스가 텍스쳐를 지원하도록 수정합니다. `Material`에 텍스쳐를 설정할 수 있도록 `_texture` attribute와 get/set 메소드를 만들어 줍니다.
 
 ```typescript
 ...
 export default class Material {
 
     ...
-    _color: Array<number>;
     _texture2D: Texture2D;
     ...
 
     ...
-    getColor(): Array<number> { return this._color; }
-    setColor(r: number, g: number, b: number): void { this._color = [r, g, b]; }
-
     getTexture(): Texture2D { return this._texture2D; }
     setTexture(texture2D: Texture2D): void { this._texture2D = texture2D; }
     ...
@@ -220,14 +216,14 @@ export default class Material {
 
 ```typescript
 ...
-start(): void {
-    this._program.start();
-    this._setUniform1f('use_texture', this._texture2D ? 1 : 0);
+start(program: Program): void {
+    program.start();
+    program.setUniform1f('use_texture', this._texture2D ? 1 : 0);
     if (this._texture2D) {
         this._texture2D.bind(this._gl.TEXTURE0);
-        this._setUniform1i('sampler', 0);
+        program.setUniform1i('sampler', 0);
     } else {
-        this._setUniform3f('color', this._color[0], this._color[1], this._color[2]);
+        program.setUniform3f('color', this._color[0], this._color[1], this._color[2]);
     }
 }
 ...
@@ -236,8 +232,8 @@ start(): void {
 `stop` 메소드에서는 bind한 텍스쳐를 다시 풀어줍니다.
 ```typescript
 ...
-stop(): void {
-    this._program.stop();
+stop(program: Program): void {
+    program.stop();
     if (this._texture2D) {
         this._texture2D.unbind(this._gl.TEXTURE0);
     }
@@ -282,12 +278,12 @@ const mainLoop = (time: number) => {
     gl.clear(gl.COLOR_BUFFER_BIT);
 
     mesh.start();
-    material.start();
+    material.start(defaultShader);
 
     mesh.render();
 
     mesh.stop();
-    material.stop();
+    material.stop(defaultShader);
 
     requestAnimationFrame(mainLoop);
 }
