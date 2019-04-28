@@ -113,6 +113,35 @@ Vertex attribute에 들어가는 데이터는 CPU에서 먼저 GPU로 전달하�
     gl.uniform3f(gl.getUniformLocation(program, 'color'), 1, 1, 1);
 ```
 
+`Program` 클래스에 여러 가지 uniform varaible을 설정할 수 있는 메소드들을 추가합니다. Shader 프로그램에서 uniform variable의 위치를 찾아서 `_uniformLocations` property에 저장해두면 처음 호출할 때만 `gl.getUniformLocation` API를 사용하고 그 다음부터는 저장된 값을 사용하게 됩니다.
+
+```typescript
+export default class Program {
+    ...
+    _uniformLocations: {[key: string]: WebGLUniformLocation} = {};
+
+    ...
+    _getUniformLocation(variableName: string): WebGLUniformLocation {
+        if (!this._uniformLocations[variableName])
+            this._uniformLocations[variableName] = this._gl.getUniformLocation(this._program, variableName);
+        return this._uniformLocations[variableName]; 
+    }
+
+    setUniform1f(variableName: string, v0: number): void {
+        this._gl.uniform1f(this._getUniformLocation(variableName), v0);
+    }
+    setUniform2f(variableName: string, v0: number, v1: number): void {
+        this._gl.uniform2f(this._getUniformLocation(variableName), v0, v1);
+    }
+    setUniform3f(variableName: string, v0: number, v1: number, v2: number): void {
+        this._gl.uniform3f(this._getUniformLocation(variableName), v0, v1, v2);
+    }
+    setUniform4f(variableName: string, v0: number, v1: number, v2: number, v3: number): void {
+        this._gl.uniform4f(this._getUniformLocation(variableName), v0, v1, v2, v3);
+    }
+}
+```
+
 ### 색을 정할 수 있는 Shader 작성
 
 Uniform variable을 활용하여 엔진 내에 색깔을 설정할 수 있는 shader를 작성해 봅시다. `engine/shaders/DefaultShader.ts` 파일에 GLSL로 vertex shader와 fragment shader를 추가합니다. Vertex shader는 달라지는 것 없이 동일하게 적습니다.
@@ -155,7 +184,7 @@ export default class DefaultShader extends Program {
 
 ### Material 클래스
 
-Material 클래스는 shader 프로그램과 그 프로그램에서 사용하는 uniform variable들을 모아서 관리하는 기능을 제공하는 클래스입니다. 즉, `gl.uniform` API를 호출하여 uniform variable의 값을 바꾸는 과정을 감싸 클래스의 메소드로 만들 것입니다.
+Material 클래스는 shader 프로그램과 그 프로그램에서 사용하는 uniform variable들을 모아서 관리하는 기능을 제공하는 클래스입니다. 즉, `Program`의 `setUniform` 메소드를 호출하여 uniform variable의 값을 바꾸는 과정을 감싸 `Material` 클래스의 메소드로 만들 것입니다.
 
 ```typescript
 import global from 'global';
@@ -164,52 +193,26 @@ import Program from 'engine/shaders/Program';
 export default class Material {
     
     _gl: WebGL2RenderingContext;
-    _program: Program;
-    _uniformLocations: {[key: string]: WebGLUniformLocation};
+    _color: Array<number>;
 
-    constructor(program: Program) {
+    constructor() {
         this._gl = global.get('gl');
-        this._program = program;
     }
 
-    start(): void {
-        this._program.start();
+    start(program: Program): void {
+        program.start();
+        program.setUniform3f('color', this._color[0], this._color[1], this._color[2]);
     }
 
-    stop(): void {
-        this._program.stop();
+    stop(program: Program): void {
+        program.stop();
     }
 
-    setColor(r: number, g: number, b: number) {
-        this._setUniform3f('color', r, g, b);
-    }
-    
-    getProgram(): Program { return this._program; }
-
-    _setUniform1f(variableName: string, v0: number): void {
-        this._gl.uniform1f(this._getUniformLocation(variableName), v0);
-    }
-    _setUniform2f(variableName: string, v0: number, v1: number): void {
-        this._gl.uniform2f(this._getUniformLocation(variableName), v0, v1);
-    }
-    _setUniform3f(variableName: string, v0: number, v1: number, v2: number): void {
-        this._gl.uniform3f(this._getUniformLocation(variableName), v0, v1, v2);
-    }
-    _setUniform4f(variableName: string, v0: number, v1: number, v2: number, v3: number): void {
-        this._gl.uniform4f(this._getUniformLocation(variableName), v0, v1, v2, v3);
-    }
-
-    _getUniformLocation(variableName: string): WebGLUniformLocation {
-        if (!this._uniformLocations[variableName])
-            this._uniformLocations[variableName] = this._gl.getUniformLocation(this._program, variableName);
-        return this._uniformLocations[variableName]; 
-    }
+    getColor(): Array<number> { return this._color; }
+    setColor(r: number, g: number, b: number): void { this._color = [r, g, b]; }
 
 }
 ```
-
-Material 클래스에서 `setUniform` 메소드들을 사용해서 uniform variable의 값을 설정할 수 있습니다. Shader 프로그램에서 uniform variable의 위치를 찾아서 `_uniformLocations` property에 저장해두면 처음 호출할 때만 `gl.getUniformLocation` API를 사용하고 그 다음부터는 저장된 값을 사용하게 됩니다.
-
 
 ### 결과
 
