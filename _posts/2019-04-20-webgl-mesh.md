@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "[WebGL] 02-2. 레이어 쌓기, Mesh"
+tags: [WebGL, Modelling]
 ---
 ## 레이어 쌓기, Mesh
 
-> [WebGL 튜토리얼 목록]({{site.url}}/webgl-tutorials)
+> [WebGL 튜토리얼 목록]({{site.url}}/1_webgl-tutorials)
 
 ### 추상화
 

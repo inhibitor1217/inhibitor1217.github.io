@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "[WebGL] 04-1. 그래픽스 파이프라인, Shader, GLSL"
+tags: [WebGL, Shader]
 ---
 ## 그래픽스 파이프라인, Shader, GLSL
 
-> [WebGL 튜토리얼 목록]({{site.url}}/webgl-tutorials)
+> [WebGL 튜토리얼 목록]({{site.url}}/1_webgl-tutorials)
 
 이번 튜토리얼에서는 [전 튜토리얼]({{site.url}}/2019/04/20/webgl-vao)에서 그냥 넘어갔던 코드가 무슨 일을 하는지 자세히 다뤄보도록 하겠습니다. 
 

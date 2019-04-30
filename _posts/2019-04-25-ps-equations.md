@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "[PS] 연립방정식 (equations)"
+tags: [PS, COCI]
 ---
 ## 연립방정식 (equations) - COCI 2018/2019
 
