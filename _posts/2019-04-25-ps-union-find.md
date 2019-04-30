@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[PS] Union-Find 자료구조"
-tags: [PS, Data Structure]
+tags: [PS, Data Structure, Union-Find]
 ---
 ## Union-Find(Disjoint set) 자료구조
 ### Union-Find 자료구조
