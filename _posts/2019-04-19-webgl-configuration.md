@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "[WebGL] 00. 작업환경 설정"
+tags: [WebGL]
 ---
 ## 작업환경 설정
 
-> [WebGL 튜토리얼 목록]({{site.url}}/webgl-tutorials)
+> [WebGL 튜토리얼 목록]({{site.url}}/1_webgl-tutorials)
 
 이 튜토리얼 시리즈는 WebGL 2.0 버전을 기반으로 하고 있습니다. 또, 개발 과정에서 Typescript와 webpack을 사용하고 있습니다.
 

@@ -4,6 +4,11 @@ layout: default
 
 <div class="post">
   <h1 class="post-title">{{ page.title }}</h1>
+  <ul class="entry-tags tag-box">
+    {% for tag in page.tags %}
+      <li><a href="{{ site.url }}/3_tags.html#{{ tag | cgi_escape }}">{{ tag }}</a></li>
+    {% endfor %}
+  </ul>
   <span class="post-date">{{ page.date | date: "%Y년 %-m월 %-d일" }}</span>
   {{ content }}
 </div>

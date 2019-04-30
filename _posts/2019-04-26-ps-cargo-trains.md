@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "[PS] 화물열차 (cargo-trains)"
+tags: [PS, KOI]
 ---
 ## 화물열차 (cargo-trains) - KOI 2005 고등
 

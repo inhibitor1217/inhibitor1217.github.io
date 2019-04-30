@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "[WebGL] 04-2. Uniform Variables, Material"
+tags: [WebGL, Shader]
 ---
 ## Uniform Variables, Material
 
-> [WebGL 튜토리얼 목록]({{site.url}}/webgl-tutorials)
+> [WebGL 튜토리얼 목록]({{site.url}}/1_webgl-tutorials)
 
 이번 튜토리얼에서는 shader를 다루는 WebGL API들을 감싸는 클래스들을 만들어 엔진에 추가합니다. `src/engine/` 디렉토리 내에 `components/Material.ts`, `shaders/Program.ts`, `shaders/DefaulShader.ts` 파일을 생성하세요.
 
@@ -221,18 +222,18 @@ export default class Material {
 ```typescript
 const defaultShader = new DefaultShader();
 const material = new Material(defaultShader);
+material.setColor(1, 0, 0); // (r, g, b) = (1, 0, 0) 빨간색으로 설정
 ```
 
 그리고 직사각형을 렌더링하는 부분에 다음 코드를 적어주세요.
 ```typescript
 mesh.start();
-material.start();
-material.setColor(1, 0, 0); // (r, g, b) = (1, 0, 0) 빨간색으로 설정
+material.start(defaultShader);
 
 mesh.render();
 
 mesh.stop();
-material.stop();
+material.stop(defaultShader);
 ```
 
 어플리케이션에서 WebGL API를 직접 호출하지 않고도 엔진의 클래스들을 활용해서 직사각형을 렌더링할 수 있게 되었습니다.

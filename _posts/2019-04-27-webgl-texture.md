@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "[WebGL] 05. Texture"
+tags: [WebGL, Texturing]
 ---
 ## Texture
 
-> [WebGL 튜토리얼 목록]({{site.url}}/webgl-tutorials)
+> [WebGL 튜토리얼 목록]({{site.url}}/1_webgl-tutorials)
 
 ### 텍스쳐
 

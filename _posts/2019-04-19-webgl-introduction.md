@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "[WebGL] WebGL 소개, 스택, OpenGL과 비교"
+tags: [WebGL]
 ---
 ## WebGL 소개, 스택, OpenGL과 비교
 
-> [WebGL 튜토리얼 목록]({{site.url}}/webgl-tutorials)
+> [WebGL 튜토리얼 목록]({{site.url}}/1_webgl-tutorials)
 
 ![webgl_logo]({{site.url}}/images/WebGL_100px_June16_180_75.png)
 
