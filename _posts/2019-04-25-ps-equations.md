@@ -97,7 +97,7 @@ Union-Find 자료구조는 제대로 구현할 경우 연산을 매우 빠르게
 
 Union-Find 자료구조는 구현하기 매우 쉽고, 강력한 연산을 매우 빠르게 수행할 수 있기 때문에 문제해결 분야에서 반드시 알아야 하는 자료구조 중 하나입니다. 아래 글을 통해 Union-Find 자료구조의 구현 방법과 시간복잡도에 관해 더 알아보시기 바랍니다.
 
-> 참고: Union-Find (Disjoint set) 자료구조 
+> 참고: [Union-Find (Disjoint set) 자료구조]({{site.url}}/2019/04/25/ps-union-find) 
 
 ### 입력/출력 예제
 

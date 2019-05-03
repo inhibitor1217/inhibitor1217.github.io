@@ -18,4 +18,4 @@ title: "[WebGL] 튜토리얼"
     - 04-1: [그래픽스 파이프라인, Shader, GLSL]({{site.url}}/2019/04/21/webgl-shader)
     - 04-2: [Uniform Variables, Material]({{site.url}}/2019/04/23/webgl-material)
 - 05: [Texture]({{site.url}}/2019/04/27/webgl-texture)
-- 06: 변환 (Transformation)
+- 06: [Transformation]({{site.url}}/2019/05/03/webgl-transformation)
