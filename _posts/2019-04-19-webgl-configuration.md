@@ -131,8 +131,9 @@ Entry file은 `src/main.ts`로, output file은 `dist/bundle.js`로 설정합니�
     "compilerOptions": {
         "outDir": "./dist/",
         "noImplicitAny": true,
-        "module": "es6",
-        "target": "es2017",
+        "module": "esnext",
+        "target": "es5",
+        "lib": ["esnext", "dom"],
         "allowJs": true
     }
 }
