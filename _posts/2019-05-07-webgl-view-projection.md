@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "[WebGL] 07. View, Projection"
+title: "[WebGL] 07. 가상 카메라"
 tags: [WebGL, Modelling]
 ---
-## View, Projection
+## 가상 카메라, View, Projection
 
 > [WebGL 튜토리얼 목록]({{site.url}}/1_webgl-tutorials)
 

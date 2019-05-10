@@ -19,9 +19,9 @@ title: "[WebGL] 튜토리얼"
     - 04-2: [Uniform Variables, Material]({{site.url}}/2019/04/23/webgl-material)
 - 05: [Texture]({{site.url}}/2019/04/27/webgl-texture)
 - 06: [Transformation]({{site.url}}/2019/05/03/webgl-transformation)
-- 07: [View, Projection]({{site.url}}/2019/05/07/webgl-view-projection)
-- 08: [Normals, Diffuse Lighting]
-- 09: [Specular Lighting]
+- 07: [가상 카메라]({{site.url}}/2019/05/07/webgl-view-projection)
+- 08: [Diffuse Lighting]({{site.url}}/2019/05/10/webgl-diffuse-lighting)
+- 09: [Specular, Ambient Lighting]
 
 ### 게임 엔진
 - 10: [Component-based Objects]
