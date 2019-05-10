@@ -5,6 +5,8 @@ tags: [WebGL, Shader, Lighting]
 ---
 ## Diffuse Lighting
 
+> [WebGL 튜토리얼 목록]({{site.url}}/1_webgl-tutorials)
+
 [앞 튜토리얼]({{site.url}}/2019/05/07/webgl-view-projection)에서 3D 물체를 가상 카메라를 활용하여 렌더링하는 방법에 대해 알아보았습니다. 하지만, 아직 빛과 그림자를 추가하지 않았기 떄문에 3D 물체라도 다소 평면적으로 보입니다. 이번에는 입체감을 더욱 살릴 수 있도록 물체의 밝고 어두운 부분을 나타내 보도록 하겠습니다.
 
 <!--more-->
