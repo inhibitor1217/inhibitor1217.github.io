@@ -7,7 +7,7 @@ tags: [WebGL, Shader, Lighting]
 
 > [WebGL 튜토리얼 목록]({{site.url}}/1_webgl-tutorials)
 
-[앞 튜토리얼]({{site.url}}/2019/05/07/webgl-view-projection)에서 3D 물체를 가상 카메라를 활용하여 렌더링하는 방법에 대해 알아보았습니다. 하지만, 아직 빛과 그림자를 추가하지 않았기 떄문에 3D 물체라도 다소 평면적으로 보입니다. 이번에는 입체감을 더욱 살릴 수 있도록 물체의 밝고 어두운 부분을 나타내 보도록 하겠습니다.
+[앞 튜토리얼]({{site.url}}/2019/05/07/webgl-view-projection)에서 3D 물체를 가상 카메라를 활용하여 렌더링하는 방법에 대해 알아보았습니다. 하지만, 아직 빛과 그림자를 추가하지 않았기 때문에 3D 물체라도 다소 평면적으로 보입니다. 이번에는 입체감을 더욱 살릴 수 있도록 물체의 밝고 어두운 부분을 나타내 보도록 하겠습니다.
 
 <!--more-->
 
@@ -21,7 +21,7 @@ tags: [WebGL, Shader, Lighting]
 
 이 튜토리얼과 이어지는 글들에서는 **diffuse lighting**, **specular lighting**, **ambient lighting**에 관해 알아보고, 이를 적용한 GLSL 프로그램을 작성하여 엔진에 포함시키도록 하겠습니다.
 
-### Diffuse lighting
+### Diffuse lighting - Lambert's Cosine Law
 
 언젠가 과학 시간에 **정반사**(specular reflection)와 **난반사**(diffuse reflection)에 대해 들어본 적이 있을 것입니다. 정반사가 일어나는 거울과 같은 매끈한 표면에서는 입사된 빛을 일정한 방향으로 반사하는데, 난반사가 일어나는 울퉁불퉁한 표면에서는 여러 방향으로 빛을 반사합니다. 우리가 일상에서 보는 대부분의 물체들은 난반사가 일어나는 표면을 가지고 있습니다.
 
@@ -30,11 +30,19 @@ tags: [WebGL, Shader, Lighting]
 
 컴퓨터 그래픽스에서는 이 메커니즘을 충분히 사실적으로 (그렇지만 효율적으로) 묘사하기 위해 다음 식을 사용합니다.
 
-$${\bf{C}}_{d} = \text{max}\{\hat{\bf{L}} \cdot \hat{\bf{N}}, 0\} I \bf{C}$$
+$$I_{d} = k_{d} I_l (\hat{N} \cdot \hat{L} )$$
 
 > [Wikipedia - Lambertian Reflectance](https://en.wikipedia.org/wiki/Lambertian_reflectance)
 
-어떤 표면이 $$\bf{C}$$라는 색깔을 가지고 있을 때, $$I$$의 밝기를 가진 빛이 표면에 비춰졌다고 가정합시다. 우리에게 보이는 색의 밝기는 빛의 입사 방향 $$\hat{\bf{L}}$$과 표면의 법선(normal) 벡터 $$\hat{\bf{N}}$$의 내적에 비례합니다. 위의 그림에서 볼 수 있듯, **빛이 표면과 수직하게 입사할수록 더 밝은 색깔로 나타나는 것이죠**.
+우리에게 보이는 색의 밝기는 빛의 입사 방향 $$\hat{L}$$과 표면의 법선(normal) 벡터 $$\hat{N}$$의 내적에 비례합니다. 위의 그림에서 볼 수 있듯, **빛이 표면과 수직하게 입사할수록 더 밝은 색깔로 나타나는 것이죠**. 이와 같이, 반사된 빛의 양이 빛의 입사 방향과 normal 벡터 사이의 각도의 코사인에 비례하는 법칙을 Lambert's cosine law라고 합니다.
+
+실제 빛은 가시광선 영역의 여러 파장의 빛들이 섞여 있지만, 컴퓨터 그래픽스에서는 3가지 파장의 (빨강, 초록, 파랑) 빛으로 이것을 압축합니다. (실제로 사람의 눈은 3가지 파장 영역을 담당하는 세포로 색을 구별하기 때문에 충분합니다!) 물체의 색깔은 그 물체가 특정 파장의 빛을 얼마나 반사하는지에 따라 결정됩니다. 예를 들어, 우리에게 (흰색 빛을 받았을 때) 빨간색으로 보이는 물체는 빨간색 파장의 빛을 많이 반사하고, 초록색과 파란색 빛은 반사하지 않기 때문에 그렇게 보이는 것이죠. 컴퓨터 그래픽스에서 이를 구현할 때도 마찬가지의 원리로 구현하면 됩니다. 물체마다 위 식에서 $$k_d$$ 값을 빨강, 초록, 파란색마다 다르게 하여 '물체의 색깔'을 표현하는 것입니다.
+
+$$I_{d, red} = k_{d, red} I_{l, red} (hat{N} \cdot \hat{L} )$$
+
+$$I_{d, green} = k_{d, green} I_{l, green} (\hat{N} \cdot \hat{L} )$$
+
+$$I_{d, blue} = k_{d, blue} I_{l, blue} (\hat{N} \cdot \hat{L} )$$
 
 ### Shader 프로그램 작성
 
@@ -59,23 +67,30 @@ void main() {
 }
 ```
 
-Fragment shader에서는 normal vector를 사용하여 위의 식에 따라 표면의 색을 결정합니다. 아직 우리는 '광원'이라는 개념을 생각하지 않고, 일단은 빛의 밝기와 빛의 방향을 상수로 정의합시다.
+Fragment shader에서는 위의 식에 따라 표면에서 반사되는 빛의 세기와 색깔을 결정합니다. 우리는 아직 엔진에서 '광원'을 디자인하지 않았기 때문에, 우선 빛의 입사 방향, 세기, 색깔을 상수로 설정하도록 합시다.
 
 ```GLSL
 // Fragment Shader
 ...
-const float light_intensity = 1.0;
 const vec3  light_direction = vec3(0, 0, 1);
+const float light_intensity = 1.0;
+const vec3  light_color = vec3(1, 1, 1);
 ...
 ```
 
-위의 식에 따라 `out_color`를 계산하는 코드도 작성하세요.
+위의 식에 따라 `out_color`를 계산하는 코드를 작성하세요.
 
 ```GLSL
 void main() {
-    vec3 surface_color = mix(vec4(color, 1), texture(sampler, pass_uv), use_texture).xyz;
-    float diffuse_factor = clamp( dot(world_normal, light_direction), 0.0, 1.0 );
-    out_color = vec4(diffuse_factor * light_intensity * surface_color, 1);
+
+    vec3 _diffuse_color = mix(vec4(color, 1), texture(sampler, pass_uv), use_texture).xyz;
+    
+    vec3 n_world_normal    = normalize(world_normal);
+    vec3 n_light_direction = normalize(light_direction);
+    float diffuse_factor   = clamp( dot(n_world_normal, n_light_direction), 0.0, 1.0 );
+    
+    out_color = vec4(diffuse_factor * light_intensity * diffuse_intensity * (_diffuse_color * light_color), 1.0);
+    
 }
 ```
 
@@ -126,6 +141,8 @@ mesh.setCount(36);
 [Preview]({{site.url}}/pages/webgl-tutorials/08-diffuse-lighting)
 
 이전 튜토리얼의 [Preview]({{site.url}}/pages/webgl-tutorials/07-view-projection)과 비교하면, 정육면체의 각 면의 밝기에 차이가 있어 좀 더 자연스러운 것을 느낄 수 있습니다.
+
+이 튜토리얼에서는 기본적인 shader에서 diffuse lighting을 어떻게 다루는지 Lambertian model을 통해 알아보았습니다. 다음 튜토리얼에서는 여기에 더하여 specular lighting과 ambient lighting을 추가하여 기본 shader를 완성해 보도록 하겠습니다.
 
 ### 링크
 
