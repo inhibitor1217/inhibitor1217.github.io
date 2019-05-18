@@ -41,7 +41,7 @@ $$\hat{R} = 2(\hat{N} \cdot \hat{L})\hat{N} - \hat{L}$$
 
 | $$n=10$$ | $$n = 25$$ | $$n = 50$$ |
 |   :-:    |    :-:     |    :-:     |
-| ![phong-1]({{site.url}}/images/webgl-tutorials-specular-lighting-phong-1.PNG) | ![phong-2]({{site.url}}/images/webgl-tutorials-specular-lighting-phong-2.PNG) | ![phong-3]({{site.url}}/images/webgl-tutorials-specular-lighting-phong-3.PNG) |
+| ![phong-1]({{site.url}}/images/webgl-specular-lighting-phong-1.PNG) | ![phong-2]({{site.url}}/images/webgl-specular-lighting-phong-2.PNG) | ![phong-3]({{site.url}}/images/webgl-specular-lighting-phong-3.PNG) |
 
 
 #### Specular Lighting - Blinn-Phong model
