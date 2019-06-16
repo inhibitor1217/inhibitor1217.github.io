@@ -17,3 +17,6 @@ version:             1.0.0
 
 # Posts
 excerpt_separator: <!--more-->
+
+# Plugins
+plugins: [jekyll-paginate]
