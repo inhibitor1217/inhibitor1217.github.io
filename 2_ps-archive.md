@@ -9,6 +9,7 @@ title: "Problem Solving"
 - [기지국 (stations) - USACO 2006 December]({{site.url}}/2019/05/05/ps-stations)
 - [베스킨라빈스 31 (br31)]({{site.url}}/2019/05/22/ps-br31)
 - [드래프트 (draft) - USACO 2009 November]({{site.url}}/2019/07/07/ps-draft)
+- [옥상 정원 꾸미기 (rooftop) - USACO 2006 November]({{site.url}}/2019/07/31/ps-rooftop)
 
 ### Topics
 - [Union-Find (Disjoint set) 자료구조]({{site.url}}/2019/04/25/ps-union-find)
