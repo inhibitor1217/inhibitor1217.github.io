@@ -5,9 +5,9 @@ tags: [WebGL]
 ---
 ## WebGL 소개, 스택, OpenGL과 비교
 
-> [WebGL 튜토리얼 목록]({{site.url}}/1_webgl-tutorials)
+> [WebGL 기본 튜토리얼 보러가기]({{site.url}}/1_webgl-tutorials)
 
-![webgl_logo]({{site.url}}/images/WebGL_100px_June16_180_75.png)
+![webgl_logo]({{site.url}}/images/WebGL_100px_June16_180_75.png){: .center-image}
 
 > 튜토리얼을 진행하고, 계속 배워가면서 업데이트하는 글입니다.
 

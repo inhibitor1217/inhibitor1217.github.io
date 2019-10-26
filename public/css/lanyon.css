@@ -36,12 +36,6 @@
  * Update the foundational and global aspects of the page.
  */
 
-/* Prevent scroll on narrow devices */
-html,
-body {
-  overflow-x: hidden;
-}
-
 html {
   font-family: 'Noto Sans','Apple SD Gothic Neo','맑은 고딕','Malgun Gothic','돋움',dotum,sans-serif;
 }
@@ -53,7 +47,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /*
- * Wrapper
+ * Wrapperpost
  *
  * The wrapper is used to position site content when the sidebar is toggled. We
  * use an outter wrap to position the sidebar without interferring with the
@@ -63,6 +57,7 @@ h1, h2, h3, h4, h5, h6 {
 .wrap {
   position: relative;
   width: 100%;
+  top: 70px;
 }
 
 
@@ -85,16 +80,6 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 44rem;
   }
 }
-
-@media (max-width: 48em) {
-  .masthead-title {
-    text-align: center;
-  }
-  .masthead-title small {
-    display: none;
-  }
-}
-
 
 /*
  * Sidebar
@@ -281,8 +266,29 @@ a.sidebar-nav-item:focus {
 
 .page,
 .post {
-  margin-bottom: 1em;
+  margin-left: 8rem;
+  margin-right: 8rem;
   padding: 1rem 0;
+  border-bottom: 1px solid #c0c0c0;
+}
+
+@media (max-width: 54em) {
+  .page, .post {
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+}
+
+@media (max-width: 38em) {
+  .page, .post {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+}
+
+.post-header {
+  padding-bottom: 2rem;
+  margin-bottom: 1rem;
   border-bottom: 1px solid #c0c0c0;
 }
 
@@ -296,6 +302,9 @@ a.sidebar-nav-item:focus {
 .post-title {
   margin-bottom: 1rem;
 }
+.post-header h1 {
+  font-size: 2rem;
+}
 
 /* Meta data line below post title */
 .post-date {
@@ -308,11 +317,82 @@ a.sidebar-nav-item:focus {
   text-align: right;
 }
 
+.post-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.post-content {
+  width: 75%;
+}
+@media (max-width: 54em) {
+  .post-content {
+    width: 100%;
+  }
+}
+
+.post-sidebar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 75px;
+  display: block;
+}
+
+@media (max-width: 54em) {
+  .post-sidebar {
+    display: none;
+  }
+}
+
+.post-tags {
+  margin-top: 4rem;
+  padding-left: 24px;
+}
+
+.post-toc ul {
+  list-style: none;
+  padding-left: 24px;
+}
+
+.post-toc a {
+  font-size: 12px;
+  color: #999;
+  text-decoration: none;
+}
+
+.post-toc a:hover {
+  color: #555;
+}
+
+/* Related posts */
+
+/*
+ * Posts and pages
+ *
+ * Each post is wrapped in `.post` and is used on default and post layouts. Each
+ * page is wrapped in `.page` and is only used on the page layout.
+ */
+
 /* Related posts */
 .related {
+  margin-left: 8rem;
+  margin-right: 8rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  border-top: 1px solid #eee;
+}
+@media (max-width: 54em) {
+  .related {
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+}
+
+@media (max-width: 38em) {
+  .related {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
 }
 .related-posts {
   padding-left: 0;
@@ -343,8 +423,7 @@ a.sidebar-nav-item:focus {
 
 .pagination {
   overflow: hidden; /* clearfix */
-  margin-left: -1rem;
-  margin-right: -1rem;
+  margin: 3rem auto;
   font-family: 'Noto Sans','Apple SD Gothic Neo','맑은 고딕','Malgun Gothic','돋움',dotum,sans-serif;
   color: #ccc;
   text-align: center;
@@ -367,9 +446,6 @@ a.pagination-item:hover {
 }
 
 @media (min-width: 30em) {
-  .pagination {
-    margin: 3rem 0;
-  }
   .pagination-item {
     float: left;
     width: 50%;
@@ -589,7 +665,8 @@ a.pagination-item:hover {
 }
 
 .about-links {
-  margin: 1rem 0;
+  margin: 1rem 2rem;
+  text-align: center;
 }
 
 .about h1 {
@@ -603,4 +680,9 @@ a.pagination-item:hover {
   padding: .5rem;
   color: #777;
   font-size: 16px;
+}
+
+.center-image {
+  display: block;
+  margin: 0 auto;
 }
