@@ -43,11 +43,11 @@ body {
 }
 
 html {
-  font-family: "PT Serif", Georgia, "Nanum Gothic";
+  font-family: 'Noto Sans','Apple SD Gothic Neo','맑은 고딕','Malgun Gothic','돋움',dotum,sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "PT Sans", Helvetica, "Nanum Gothic";
+  font-family: 'Noto Sans','Apple SD Gothic Neo','맑은 고딕','Malgun Gothic','돋움',dotum,sans-serif;
   letter-spacing: -.025rem;
 }
 
@@ -148,7 +148,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 14rem;
   visibility: hidden;
   overflow-y: auto;
-  font-family: "PT Sans", Helvetica, 'Nanum Gothic';
+  font-family: 'Noto Sans','Apple SD Gothic Neo','맑은 고딕','Malgun Gothic','돋움',dotum,sans-serif;
   font-size: 15px; /* 15px */
   color: rgba(255,255,255,.6);
   background-color: #202020;
@@ -330,8 +330,7 @@ a.sidebar-nav-item:focus {
 /* Meta data line below post title */
 .post-date {
   display: block;
-  margin-top: -.5rem;
-  margin-bottom: 1rem;
+  margin: .5rem 0 2rem 0;
   color: #9a9a9a;
 }
 
@@ -381,10 +380,11 @@ a.sidebar-nav-item:focus {
   overflow: hidden; /* clearfix */
   margin-left: -1rem;
   margin-right: -1rem;
-  font-family: "PT Sans", Helvetica, 'Nanum Gothic';
+  font-family: 'Noto Sans','Apple SD Gothic Neo','맑은 고딕','Malgun Gothic','돋움',dotum,sans-serif;
   color: #ccc;
   text-align: center;
 }
+
 
 /* Pagination items can be `span`s or `a`s */
 .pagination-item {
@@ -428,7 +428,7 @@ a.pagination-item:hover {
 .tag-box {
   list-style: none;
   margin: 0;
-  padding: 4px 0;
+  padding: .5rem 0;
   overflow: hidden;
 }
 .tag-box li {
@@ -440,10 +440,15 @@ a.pagination-item:hover {
 .tag-box a {
   padding: 4px 6px;
   margin: 2px;
-  background-color: #e6e6e6;
-  border-radius: 4px;
+  background-color: #e7f6f9;
   text-decoration: none;
+  color: #0faac8;
 }
+
+.tag-box a:hover {
+  background-color: #B3E5FC;
+}
+
 .tag-box span {
   vertical-align: super;
   font-size: 10px;

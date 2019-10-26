@@ -46,7 +46,7 @@ PM(나)에게 주어진 상황은 다음과 같았다.
 그래서 존재하는 게 Dockerfile이다. Dockerfile은 base image에서 출발해서 실행할 명령들을 차례대로 적어 놓은 설정 파일이다. `docker build` 명령을 날리면 도커는 Dockerfile을 보고 명령을 하나하나 실행해서 새로운 이미지를 생성한다. 이 이미지는 우리가 원하는 것들이 정확하게 세팅된 이미지이므로 그냥 `docker run`하면 모든 것이 갖추어진 컨테이너가 올라간다 bb
 
 #### **`kono/kono-api/Dockerfile`**
-```Dockerfile
+```
 FROM node:12
 MAINTAINER inhibitor <inhibitor@kaist.ac.kr>
 
@@ -85,7 +85,7 @@ CMD [ "/bin/sh", "-c", "NODE_ENV=production nodemon bundle.js > /usr/src/log/std
 위의 Dockerfile을 다시 보자.
 
 #### **`kono/kono-api/Dockerfile`**
-```Dockerfile
+```
 ...
 VOLUME /usr/src/app
 VOLUME /usr/src/assets
@@ -108,7 +108,7 @@ API 서버가 올라간 컨테이너(`api`)는 3개 디렉토리를 볼륨으로
 Dockerfile은 명령을 "순서대로" 실행하는 메모장이기 때문에 `apt-get`이든 `useradd`든 리눅스 위에서 할 수 있는 건 다 할 수 있다. `maintainer` 컨테이너에서 SSH Daemon을 실행하고 SSH 접근용 계정(`wheel`, `sysop`)을 만드는 것도 Dockerfile에 적어 놓았다.
 
 #### **`kono/Dockerfile-maintainer`**
-```Dockerfile
+```
 FROM ubuntu:16.04
 MAINTAINER inhibitor <inhibitor@kaist.ac.kr>
 

@@ -48,7 +48,7 @@ body {
 }
 
 html {
-  font-family: "Helvetica Neue", Helvetica, 'Nanum Gothic';
+  font-family: 'Noto Sans','Apple SD Gothic Neo','맑은 고딕','Malgun Gothic','돋움',dotum,sans-serif;
   font-size: 16px;
   line-height: 1.5;
 }
@@ -83,19 +83,22 @@ h1, h2, h3, h4, h5, h6 {
   text-rendering: optimizeLegibility;
 }
 h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
+  font-weight: normal;
 }
 h2 {
-  margin-top: 1rem;
-  font-size: 1.5rem;
-}
-h3 {
-  margin-top: 1.5rem;
-  font-size: 1.25rem;
+  margin: 3rem 0;
+  font-size: 1.4rem;
+  font-weight: normal;
   color: teal;
 }
+h3 {
+  margin: 2rem 0;
+  font-size: 1.2rem;
+  font-weight: normal;
+}
 h4, h5, h6 {
-  margin-top: 1rem;
+  margin: 1.5rem 0;
   font-size: 1rem;
   font-style: bold;
 }
@@ -104,6 +107,7 @@ h4, h5, h6 {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+  line-height: 28px;
 }
 
 strong {
@@ -147,13 +151,11 @@ abbr[title] {
 /* Code */
 code,
 pre {
-  font-family: 'Consolas', monospace;
+  font-family: "Ubuntu Mono", monospace;
 }
 code {
-  padding: .25em .5em;
-  font-size: 85%;
-  color: #bf616a;
-  background-color: #f9f9f9;
+  padding: .1em .3em;
+  color: #333;
   border-radius: 3px;
 }
 pre {
@@ -161,13 +163,11 @@ pre {
   margin-top: 0;
   margin-bottom: 1rem;
   padding: 1rem;
-  font-size: .8rem;
   line-height: 1.4;
   white-space: pre;
   white-space: pre-wrap;
   word-break: break-all;
   word-wrap: break-word;
-  background-color: #f9f9f9;
 }
 pre code {
   padding: 0;
