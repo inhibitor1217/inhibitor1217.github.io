@@ -323,15 +323,6 @@ a.sidebar-nav-item:focus {
   flex-direction: row;
 }
 
-.post-content {
-  width: 75%;
-}
-@media (max-width: 54em) {
-  .post-content {
-    width: 100%;
-  }
-}
-
 .post-sidebar {
   position: -webkit-sticky;
   position: sticky;
@@ -343,6 +334,10 @@ a.sidebar-nav-item:focus {
   .post-sidebar {
     display: none;
   }
+}
+
+.post-content {
+  min-width: 75%;
 }
 
 .post-tags {

@@ -1,25 +1,21 @@
 ---
 layout: post
-title: "[WebGL] WebGL 소개, 스택, OpenGL과 비교"
-tags: [WebGL]
+title: "WebGL 소개, 스택, OpenGL과 비교"
+tags: [webgl]
 ---
-## WebGL 소개, 스택, OpenGL과 비교
-
 > [WebGL 기본 튜토리얼 보러가기]({{site.url}}/1_webgl-tutorials)
 
-![webgl_logo]({{site.url}}/images/WebGL_100px_June16_180_75.png){: .center-image}
-
-> 튜토리얼을 진행하고, 계속 배워가면서 업데이트하는 글입니다.
+![webgl_logo]({{site.url}}/images/2019-04-19-webgl-introduction/webgl_logo.png){: .center-image}
 
 <!--more-->
 
-### 그래픽스 라이브러리?
+## 그래픽스 라이브러리?
 
 많은 개발자들이 Unity나 Unreal Engine과 같은 게임 엔진을 활용하여 자신만의 게임을 만듭니다. 게임 엔진은 게임 개발의 입문 난이도를 엄청나게 낮춰주지만, 그만큼 게임 엔진만을 다루며 개발하면 엔진 속에서 어떤 일이 일어나는지 *behind the scenes* 알기 어렵습니다. 또한 멋있어 보이는 효과를 연출하고 싶거나, 최적화를 하고 싶다면 게임 엔진 내에서 어떠한 작업이 이루어지는지 반드시 알아야 합니다.
 
 그래픽스 라이브러리(Graphics Library)는 사용자가 원하는 그림을 화면에 표시하는 것을 담당하는 라이브러리입니다. 모든 게임 엔진 내에 내장되어 있으며, 대부분 GPU를 통해 효율적으로 작업을 수행합니다. OpenGL, DirectX 등이 대표적인 그래픽스 라이브러리입니다.
 
-### WebGL
+## WebGL
 
 WebGL은 OpenGL을 기반으로 하고 있습니다. OpenGL과 마찬가지로 Khronos Group에서 관리하는 오픈 소스 라이브러리입니다. Khronos Group에서는 다음과 같이 소개하고 있습니다.
 
@@ -43,16 +39,16 @@ WebGL brings plugin-free 3D to the web, implemented right into the browser. Majo
     - OpenGL 등 게임 엔진에서 직접 구현해야 하는 버튼 등의 UI element를 HTML의 지원을 받아 쉽게 추가할 수 있습니다.
     - 멀티플레이어 게임 등 네트워킹이 필요한 어플리케이션의 경우, 이미 관련 module이 많고 브라우저의 지원 또한 이용할 수 있습니다.
 
-### WebGL 개발
+## WebGL 개발
 
 Javscript와 그래픽스 라이브러리 관련한 경험이 있으면 편하게 개발할 수 있습니다. WebGL의 documentation을 보면 OpenGL 3.0의 API를 Javscript에 맞게 번역한 형태로 쓰여져 있다는 사실을 알 수 있습니다. 따라서, 대부분의 경우 OpenGL application을 만들 듯 하면 되지만, 메모리 관리나 네트워킹, 파일 입출력 등에서 차이가 있습니다. 이 부분 관련해서는 브라우저, Web application 관련 지식이 필요할 것 같습니다.
 
-### API Documentation
+## API Documentation
 
 - [WebGL 1.0](https://www.khronos.org/registry/webgl/specs/latest/1.0/)
 - [WebGL 2.0](https://www.khronos.org/registry/webgl/specs/latest/2.0/)
 
-### 링크
+## 링크
 
 - [Khronos Group 공식 사이트](https://www.khronos.org/webgl/)
 - [GitHub Repository](https://github.com/KhronosGroup/WebGL)

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "도커로 설정하는 서비스 개발/운영 환경"
-tags: [Backend, Docker]
+tags: [backend, docker]
 ---
 
 [SPARCS](https://sparcs.org)에서 내가 진행하는 프로젝트([kono](https://github.com/sparcs-kaist/kono))의 개발 및 운영 환경을 만들어야 할 때가 왔다. 사실 프로젝트 시작할 때 이것부터 하고 시작해야 하지만... 어쩌다 보니 프로젝트가 절반가량 진행된 시점에서 하게 되었다. `npm start`랑 `npm build`밖에 모르던 사람이 이 과제를 해결하는 과정을 차근차근 알아보자. 

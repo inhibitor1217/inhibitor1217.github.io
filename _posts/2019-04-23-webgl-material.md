@@ -1,10 +1,8 @@
 ---
 layout: post
-title: "[WebGL] 04-2. Uniform Variables, Material"
-tags: [WebGL, Shader]
+title: "04-2. Uniform Variables, Material"
+tags: [webgl, shader]
 ---
-## Uniform Variables, Material
-
 > [WebGL 튜토리얼 목록]({{site.url}}/1_webgl-tutorials)
 
 이번 튜토리얼에서는 shader를 다루는 WebGL API들을 감싸는 클래스들을 만들어 엔진에 추가합니다. `src/engine/` 디렉토리 내에 `components/Material.ts`, `shaders/Program.ts`, `shaders/DefaulShader.ts` 파일을 생성하세요.
@@ -27,7 +25,7 @@ tags: [WebGL, Shader]
 ├── style.css
 ...
 ```
-### Program 클래스
+## Program 클래스
 
 `src/engine/` 디렉토리 내의 `shaders/Program.ts` 파일에서 작업합니다.
 
@@ -97,7 +95,7 @@ delete(): void {
 }
 ```
 
-### Uniform Variables
+## Uniform Variables
 
 > [OpenGL Wiki - Uniform (GLSL)](https://www.khronos.org/opengl/wiki/Uniform_(GLSL))
 
@@ -143,7 +141,7 @@ export default class Program {
 }
 ```
 
-### 색을 정할 수 있는 Shader 작성
+## 색을 정할 수 있는 Shader 작성
 
 Uniform variable을 활용하여 엔진 내에 색깔을 설정할 수 있는 shader를 작성해 봅시다. `engine/shaders/DefaultShader.ts` 파일에 GLSL로 vertex shader와 fragment shader를 추가합니다. Vertex shader는 달라지는 것 없이 동일하게 적습니다.
 
@@ -183,7 +181,7 @@ export default class DefaultShader extends Program {
 }
 ```
 
-### Material 클래스
+## Material 클래스
 
 Material 클래스는 shader 프로그램과 그 프로그램에서 사용하는 uniform variable들을 모아서 관리하는 기능을 제공하는 클래스입니다. 즉, `Program`의 `setUniform` 메소드를 호출하여 uniform variable의 값을 바꾸는 과정을 감싸 `Material` 클래스의 메소드로 만들 것입니다.
 
@@ -215,7 +213,7 @@ export default class Material {
 }
 ```
 
-### 결과
+## 결과
 
 새로 만들어진 클래스들을 어플리케이션 코드에 적용해 봅시다. `src/main.ts`에서 shader를 활용하는 부분 코드를 지우고, 대신 `DefaultShader`와 이 shader 프로그램을 이용하는 `Material`을 생성합니다.
 
@@ -240,6 +238,6 @@ material.stop(defaultShader);
 
 [Preview]({{site.url}}/pages/webgl-tutorials/04-2-material)
 
-### 링크
+## 링크
 
 [GitHub Repository](https://github.com/inhibitor1217/webgl-tutorials/tree/master/tutorials/04-shader)

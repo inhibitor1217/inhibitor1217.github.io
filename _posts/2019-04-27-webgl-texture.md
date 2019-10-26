@@ -1,13 +1,11 @@
 ---
 layout: post
-title: "[WebGL] 05. Texture"
-tags: [WebGL, Texturing]
+title: "05. Texture"
+tags: [webgl, texture]
 ---
-## Texture
-
 > [WebGL 튜토리얼 목록]({{site.url}}/1_webgl-tutorials)
 
-### 텍스쳐
+## 텍스쳐
 
 > [OpenGL Wiki - Texture](https://www.khronos.org/opengl/wiki/Texture)
 
@@ -15,7 +13,7 @@ tags: [WebGL, Texturing]
 
 <!--more-->
 
-![texture-example](https://upload.wikimedia.org/wikipedia/commons/f/f2/Texture_mapping_demonstration_animation.gif)
+![texture-example](https://upload.wikimedia.org/wikipedia/commons/f/f2/Texture_mapping_demonstration_animation.gif){: .center-image}
 
 > 출처: [Wikipedia - Texture Mapping](https://en.wikipedia.org/wiki/Texture_mapping)
 
@@ -31,9 +29,9 @@ tags: [WebGL, Texturing]
 WebGL에서는 VAO, BO, 프로그램 등 다른 오브젝트와 마찬가지로 텍스쳐 또한 생성, 삭제, bind API를 통해 관리할 수 있습니다.
 
 ```typescript
-WebGLTexture gl.createTexture();
-void gl.deleteTexture(WebGLTexture texture);
-void gl.bindTexture(GLenum target, WebGLTexture texture);
+gl.createTexture(): WebGLTexture;
+gl.deleteTexture(WebGLTexture texture): void;
+gl.bindTexture(GLenum target, WebGLTexture texture): void;
 ```
 
 WebGL에서는 여러 가지 종류의 텍스쳐(2D 텍스쳐, 3D 텍스쳐, 큐브맵 텍스쳐 등)를 동시에 bind 할 수 있기 때문에 `bindTexture` 함수의 `target` 인수로 어떤 종류에 텍스쳐에 bind 할 것인지 넘겨줍니다. 이 튜토리얼에서는 가장 기본인 2D 텍스쳐만 다룰 것이기 때문에 `gl.TEXTURE_2D`로 설정합니다.
@@ -131,7 +129,7 @@ loadFromImage(imageSrc: string): void {
 ```
 이미지를 불러온 후 `onload` 함수가 호출되어 데이터를 텍스쳐에 `texImage2D` API로 채워넣게 됩니다.
 
-### Shader 프로그램 작성
+## Shader 프로그램 작성
 
 이전에 작성한 `src/engine/shaders/DefaultShader.ts`는 `Material`에서 색깔을 설정하면 그 색깔로 직사각형을 그리도록 코드를 작성했는데, 이제 텍스쳐가 존재하면 그 이미지를 직사각형에 그리도록 shader를 작성해 봅시다.
 
@@ -193,7 +191,7 @@ else
 
 > 그러나, 이 경우는 분기를 발생시키는 조건문이 uniform variable에 걸려있기 때문에, 컴파일러가 컴파일 시 각 분기에 따라 서로 다른 shader 프로그램 두 개를 만들어 uniform variable의 값에 따라 다른 프로그램을 사용하는 방식으로 최적화를 진행하여 별로 차이가 나지 않습니다. 하지만 일반적으로 조건-분기문은 shader의 성능을 떨어뜨리는 원인이므로 유의해야 합니다.
 
-### Material 클래스 수정
+## Material 클래스 수정
 
 다음으로는, 이전에 작성한 `Material` 클래스가 텍스쳐를 지원하도록 수정합니다. `Material`에 텍스쳐를 설정할 수 있도록 `_texture` attribute와 get/set 메소드를 만들어 줍니다.
 
@@ -242,7 +240,7 @@ stop(program: Program): void {
 ...
 ```
 
-### 메인 루프
+## 메인 루프
 
 어플리케이션에서 새로 작성한 클래스들을 적용하여 원하는 이미지를 직사각형에 그려 보도록 하겠습니다. 먼저, 앞서 보았던 그림처럼 직사각형의 vertex attribute를 설정해 줍니다. Vertex attribute에 uv 또한 추가된다는 사실에 유의하세요.
 
@@ -295,7 +293,7 @@ requestAnimationFrame(mainLoop);
 
 `mainLoop` 함수 내에서 다시 `requestAnimationFrame(mainLoop)`를 호출하기 때문에 `mainLoop` 함수가 무한히 반복되고, 그 안의 `mesh.render()` 함수도 계속해서 호출되는 방식입니다.
 
-### 결과
+## 결과
 
 아래 링크처럼, 원하는 이미지가 직사각형의 텍스쳐로 나타난 것을 볼 수 있습니다. 더 구체적으로는
 - 이미지를 불러오기 전에는 placeholder로 설정한 자주색 (255, 0, 255, 255) 텍스쳐가 사용되어 직사각형이 잠깐 동안 자주색으로 보입니다.
@@ -306,6 +304,6 @@ requestAnimationFrame(mainLoop);
 - 직사각형의 uv 좌표를 적절히 조정하여, 이미지가 뒤집혀서 나타나도록 시도해 보세요.
 - 이전 튜토리얼처럼 텍스쳐를 설정하지 않고 특정 색깔로 직사각형을 그리는 것도 여전히 잘 작동하는지 확인해 보세요.
 
-### 링크
+## 링크
 
 [GitHub Repository](https://github.com/inhibitor1217/webgl-tutorials/tree/master/tutorials/05-texture)
