@@ -1,13 +1,11 @@
 ---
 layout: post
-title: "[WebGL] 02-2. 레이어 쌓기, Mesh"
-tags: [WebGL, Modelling]
+title: "02-2. 레이어 쌓기, Mesh"
+tags: [webgl]
 ---
-## 레이어 쌓기, Mesh
-
 > [WebGL 튜토리얼 목록]({{site.url}}/1_webgl-tutorials)
 
-### 추상화
+## 추상화
 
 [앞선 튜토리얼]({{site.url}}/2019/04/20/webgl-vao)에서는 WebGL의 API를 사용하여 화면에 직사각형을 그려 보았습니다. 이와 같은 방식으로 복잡한 수백만 개의 모델을 렌더링하는 것도 가능은 합니다만... 과연 이것이 좋은 전략일까요?
 
@@ -32,11 +30,11 @@ WebGL API를 사용하는 모든 코드를 `src/main.ts`에 넣는 것보다는,
 
 최종적으로는, WebGL이라는 low-level 라이브러리를 이용하기 편리하게 작성한 `Mesh`와 같은 클래스들을 묶어 하나의 라이브러리처럼 관리합니다.
 
-![api]({{site.url}}/images/02-mesh-api.png)
+![api]({{site.url}}/images/2019-04-20-webgl-mesh/api.png){: .image-center}
 
 `src/` 디렉토리 내에 `engine/` 디렉토리를 만들어 주세요. 앞으로 추상화 작업을 진행할수록, WebGL API를 사용하는 코드는 엔진 내로 감춰지고 `src/main.ts` 어플리케이션에서는 엔진 라이브러리를 활용하는 방식으로 디자인 할 계획입니다.
 
-### Mesh 클래스
+## Mesh 클래스
 
 `src/engine/` 디렉토리 내의 `components/Mesh.ts` 파일에서 작업합니다.
 
@@ -181,7 +179,7 @@ getVBO(): WebGLBuffer { return this._vbo; }
 ```
 그리고 private 변수에 접근할 수 있는 get/set 메소드도 구현합니다.
 
-### 결과
+## 결과
 
 `Mesh` 클래스를 활용하여 `src/main.ts`의 코드를 다듬어 봅시다. 기존의 코드에서 VAO와 BO 관련 API를 사용하는 부분을 모두 `Mesh`로 대체합니다.
 

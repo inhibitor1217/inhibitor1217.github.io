@@ -36,24 +36,18 @@
  * Update the foundational and global aspects of the page.
  */
 
-/* Prevent scroll on narrow devices */
-html,
-body {
-  overflow-x: hidden;
-}
-
 html {
-  font-family: "PT Serif", Georgia, "Nanum Gothic";
+  font-family: 'Noto Sans','Apple SD Gothic Neo','맑은 고딕','Malgun Gothic','돋움',dotum,sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "PT Sans", Helvetica, "Nanum Gothic";
+  font-family: 'Noto Sans','Apple SD Gothic Neo','맑은 고딕','Malgun Gothic','돋움',dotum,sans-serif;
   letter-spacing: -.025rem;
 }
 
 
 /*
- * Wrapper
+ * Wrapperpost
  *
  * The wrapper is used to position site content when the sidebar is toggled. We
  * use an outter wrap to position the sidebar without interferring with the
@@ -63,6 +57,7 @@ h1, h2, h3, h4, h5, h6 {
 .wrap {
   position: relative;
   width: 100%;
+  top: 70px;
 }
 
 
@@ -82,47 +77,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 @media (min-width: 56em) {
   .container {
-    max-width: 38rem;
+    max-width: 44rem;
   }
 }
-
-
-/*
- * Masthead
- *
- * Super small header above the content for site name and short description.
- */
-
-.masthead {
-  padding-top:    1rem;
-  padding-bottom: 1rem;
-  margin-bottom: 3rem;
-  border-bottom: 1px solid #eee;
-}
-.masthead-title {
-  margin-top: 0;
-  margin-bottom: 0;
-  color: #505050;
-}
-.masthead-title a {
-  color: #505050;
-}
-.masthead-title small {
-  font-size: 75%;
-  font-weight: 400;
-  color: #c0c0c0;
-  letter-spacing: 0;
-}
-
-@media (max-width: 48em) {
-  .masthead-title {
-    text-align: center;
-  }
-  .masthead-title small {
-    display: none;
-  }
-}
-
 
 /*
  * Sidebar
@@ -148,7 +105,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 14rem;
   visibility: hidden;
   overflow-y: auto;
-  font-family: "PT Sans", Helvetica, 'Nanum Gothic';
+  font-family: 'Noto Sans','Apple SD Gothic Neo','맑은 고딕','Malgun Gothic','돋움',dotum,sans-serif;
   font-size: 15px; /* 15px */
   color: rgba(255,255,255,.6);
   background-color: #202020;
@@ -309,11 +266,30 @@ a.sidebar-nav-item:focus {
 
 .page,
 .post {
-  margin-bottom: 4em;
-  padding: 1rem;
-  background-color: #ffffff;
-  border-radius: 6px;
-  box-shadow: 0 3px 3px 0px #9a9a9a33;
+  margin-left: 8rem;
+  margin-right: 8rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #c0c0c0;
+}
+
+@media (max-width: 54em) {
+  .page, .post {
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+}
+
+@media (max-width: 38em) {
+  .page, .post {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+}
+
+.post-header {
+  padding-bottom: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #c0c0c0;
 }
 
 /* Blog post or page title */
@@ -324,31 +300,94 @@ a.sidebar-nav-item:focus {
 }
 .page-title,
 .post-title {
-  margin-top: 0;
+  margin-bottom: 1rem;
+}
+.post-header h1 {
+  font-size: 2rem;
 }
 
 /* Meta data line below post title */
 .post-date {
   display: block;
-  margin-top: -.5rem;
-  margin-bottom: 1rem;
   color: #9a9a9a;
 }
 
-.post-footer {
-  padding-top: 1rem;
-  border-top: 1px #9a9a9a solid;
-}
 .post-footer p {
-  font-size: 16px;
+  font-size: 14px;
   text-align: right;
 }
 
+.post-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.post-sidebar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 75px;
+  display: block;
+}
+
+@media (max-width: 54em) {
+  .post-sidebar {
+    display: none;
+  }
+}
+
+.post-content {
+  min-width: 75%;
+}
+
+.post-tags {
+  margin-top: 4rem;
+  padding-left: 24px;
+}
+
+.post-toc ul {
+  list-style: none;
+  padding-left: 24px;
+}
+
+.post-toc a {
+  font-size: 12px;
+  color: #999;
+  text-decoration: none;
+}
+
+.post-toc a:hover {
+  color: #555;
+}
+
+/* Related posts */
+
+/*
+ * Posts and pages
+ *
+ * Each post is wrapped in `.post` and is used on default and post layouts. Each
+ * page is wrapped in `.page` and is only used on the page layout.
+ */
+
 /* Related posts */
 .related {
+  margin-left: 8rem;
+  margin-right: 8rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  border-top: 1px solid #eee;
+}
+@media (max-width: 54em) {
+  .related {
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+}
+
+@media (max-width: 38em) {
+  .related {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
 }
 .related-posts {
   padding-left: 0;
@@ -379,12 +418,12 @@ a.sidebar-nav-item:focus {
 
 .pagination {
   overflow: hidden; /* clearfix */
-  margin-left: -1rem;
-  margin-right: -1rem;
-  font-family: "PT Sans", Helvetica, 'Nanum Gothic';
+  margin: 3rem auto;
+  font-family: 'Noto Sans','Apple SD Gothic Neo','맑은 고딕','Malgun Gothic','돋움',dotum,sans-serif;
   color: #ccc;
   text-align: center;
 }
+
 
 /* Pagination items can be `span`s or `a`s */
 .pagination-item {
@@ -402,9 +441,6 @@ a.pagination-item:hover {
 }
 
 @media (min-width: 30em) {
-  .pagination {
-    margin: 3rem 0;
-  }
   .pagination-item {
     float: left;
     width: 50%;
@@ -428,7 +464,7 @@ a.pagination-item:hover {
 .tag-box {
   list-style: none;
   margin: 0;
-  padding: 4px 0;
+  padding: .5rem 0;
   overflow: hidden;
 }
 .tag-box li {
@@ -440,10 +476,15 @@ a.pagination-item:hover {
 .tag-box a {
   padding: 4px 6px;
   margin: 2px;
-  background-color: #e6e6e6;
-  border-radius: 4px;
+  background-color: #e7f6f9;
   text-decoration: none;
+  color: #0faac8;
 }
+
+.tag-box a:hover {
+  background-color: #B3E5FC;
+}
+
 .tag-box span {
   vertical-align: super;
   font-size: 10px;
@@ -602,4 +643,41 @@ a.pagination-item:hover {
 /* Only one tweak for a reverse layout */
 .layout-reverse.sidebar-overlay #sidebar-checkbox:checked ~ .sidebar {
   box-shadow: -.25rem 0 .5rem rgba(0,0,0,.1);
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  margin: 3rem 0;
+}
+
+.about-logo img {
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+}
+
+.about-links {
+  margin: 1rem 2rem;
+  text-align: center;
+}
+
+.about h1 {
+  margin: 0;
+  padding: .5rem 1rem;
+  font-size: 28px;
+}
+
+.about h2 {
+  margin: 0;
+  padding: .5rem;
+  color: #777;
+  font-size: 16px;
+}
+
+.center-image {
+  display: block;
+  margin: 0 auto;
 }

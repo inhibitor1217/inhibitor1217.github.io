@@ -1,9 +1,8 @@
 ---
 layout: post
-title: "[WebGL] 08. Diffuse Lighting"
-tags: [WebGL, Shader, Lighting]
+title: "08. Diffuse Lighting"
+tags: [webgl, shader]
 ---
-## Diffuse Lighting
 
 > [WebGL 튜토리얼 목록]({{site.url}}/1_webgl-tutorials)
 
@@ -11,7 +10,7 @@ tags: [WebGL, Shader, Lighting]
 
 <!--more-->
 
-### Shading
+## Shading
 
 ![wiki-shading-1](https://upload.wikimedia.org/wikipedia/commons/8/84/Phong-shading-sample.jpg)
 
@@ -21,7 +20,7 @@ tags: [WebGL, Shader, Lighting]
 
 이 튜토리얼과 이어지는 글들에서는 **diffuse lighting**, **specular lighting**, **ambient lighting**에 관해 알아보고, 이를 적용한 GLSL 프로그램을 작성하여 엔진에 포함시키도록 하겠습니다.
 
-### Diffuse lighting - Lambert's Cosine Law
+## Diffuse lighting - Lambert's Cosine Law
 
 언젠가 과학 시간에 **정반사**(specular reflection)와 **난반사**(diffuse reflection)에 대해 들어본 적이 있을 것입니다. 정반사가 일어나는 거울과 같은 매끈한 표면에서는 입사된 빛을 일정한 방향으로 반사하는데, 난반사가 일어나는 울퉁불퉁한 표면에서는 여러 방향으로 빛을 반사합니다. 우리가 일상에서 보는 대부분의 물체들은 난반사가 일어나는 표면을 가지고 있습니다.
 
@@ -30,7 +29,9 @@ tags: [WebGL, Shader, Lighting]
 
 컴퓨터 그래픽스에서는 이 메커니즘을 충분히 사실적으로 (그렇지만 효율적으로) 묘사하기 위해 다음 식을 사용합니다.
 
-$$I_{d} = k_{d} I_l (\hat{N} \cdot \hat{L} )$$
+$$
+I_{d} = k_{d} I_l (\hat{N} \cdot \hat{L} )
+$$
 
 > [Wikipedia - Lambertian Reflectance](https://en.wikipedia.org/wiki/Lambertian_reflectance)
 
@@ -44,7 +45,7 @@ $$I_{d, green} = k_{d, green} I_{l, green} (\hat{N} \cdot \hat{L} )$$
 
 $$I_{d, blue} = k_{d, blue} I_{l, blue} (\hat{N} \cdot \hat{L} )$$
 
-### Shader 프로그램 작성
+## Shader 프로그램 작성
 
 이 식을 shader 프로그램에 적용하여 diffuse lighting을 구현합시다. Shader 프로그램에서 물체 표면의 법선 벡터에 접근할 수 있도록 법선 벡터를 vertex attribute로 넘겨줍니다.
 
@@ -94,7 +95,7 @@ void main() {
 }
 ```
 
-### 결과
+## 결과
 
 새로 작성한 shader 프로그램을 확인하기 전, 이전 튜토리얼에서 작성한 정육면체 모델의 데이터가 각 면의 법선 벡터 또한 가지고 있도록 다음 내용으로 교체하세요.
 
@@ -144,6 +145,6 @@ mesh.setCount(36);
 
 이 튜토리얼에서는 기본적인 shader에서 diffuse lighting을 어떻게 다루는지 Lambertian model을 통해 알아보았습니다. 다음 튜토리얼에서는 여기에 더하여 specular lighting과 ambient lighting을 추가하여 기본 shader를 완성해 보도록 하겠습니다.
 
-### 링크
+## 링크
 
 [GitHub Repository](https://github.com/inhibitor1217/webgl-tutorials/tree/master/tutorials/08-diffuse-lighting)

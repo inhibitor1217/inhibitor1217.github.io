@@ -1,19 +1,17 @@
 ---
 layout: post
-title: "[WebGL] 07. 가상 카메라"
-tags: [WebGL, Modelling]
+title: "07. 가상 카메라"
+tags: [webgl]
 ---
-## 가상 카메라, View, Projection
-
 > [WebGL 튜토리얼 목록]({{site.url}}/1_webgl-tutorials)
 
 이번 튜토리얼에서는 (드디어!) 3D 물체를 제대로 렌더링하도록 하겠습니다. 3D 물체를 올바르게 2D 화면에 표시하기 위해서는 마치 공간 상에 **가상 카메라**가 있다고 가정하고, 그 카메라의 좌표계로 물체를 나타냅니다.
 
 <!--more-->
 
-![intro-1]({{site.url}}/images/webgl-view-projection-intro-1.PNG)
+![intro-1]({{site.url}}/images/2019-05-07-webgl-view-projection/intro-1.png)
 
-### 가상 카메라
+## 가상 카메라
 
 가상 카메라는 다음과 같은 property를 가지고 있습니다.
 - `near`: 화면에 보이는 물체가 카메라로부터 떨어져 있을 수 있는 최소 거리.
@@ -21,7 +19,7 @@ tags: [WebGL, Modelling]
 - `fov`(field of view): 카메라의 너비
 - `aspectRatio`: 화면의 가로-세로 비율.
 
-![camera-1]({{site.url}}/images/webgl-view-projection-camera-1.PNG)
+![camera-1]({{site.url}}/images/2019-05-07-webgl-view-projection/camera-1.png)
 
 이 수치들을 바탕으로 물체의 좌표계를 카메라의 좌표계로 변환하는 행렬(**Projection Matrix**)을 계산합니다. 여기에서는 자세한 수학은 생략하고, NPM 모듈 `gl-matrix`의 built-in 함수를 사용합니다. 어떠한 원리로 projection matrix가 만들어지는지 궁금하신 분들은 아래 링크들을 참조하시면 되겠습니다.
 
@@ -77,13 +75,13 @@ export default class Camera {
 }
 ```
 
-### Shader에서 Projection 사용하기
+## Shader에서 Projection 사용하기
 
 [이전 튜토리얼]({{site.url}}/2019/05/03/webgl-transformation)에서 물체의 위치를 바꾸고 싶을 때, vertex의 좌표 벡터와 변환행렬을 곱해 vertex 위치를 얻을 수 있었습니다. 이제 가상 카메라의 위치와 방향, projection matrix를 함께 고려해 봅시다.
 
 모델 내에서의 vertex 좌표에 모델 자체의 transformation을 적용하면 기준 좌표(world coordinate)에서 vertex의 좌표를 알 수 있습니다. (마치 직사각형이 `x=0.3` 위치에 있으면, 직사각형 모델의 `(0.5, 0.5)`가 `(0.8, 0.5)`로 변하는 것이죠.) 즉, **모델의 transformation은 model coordinate를 world coordinate로 변환합니다**. 반대로, 모델의 inverse transformation(역행렬)은 world coordinate를 model coordinate로 변환합니다. 따라서, world coordinate 좌표에 카메라의 inverse transform을 적용하면, 카메라 좌표계에서 그 vertex의 좌표를 얻을 수 있습니다.
 
-![shader-1]({{site.url}}/images/webgl-view-projection-shader-1.PNG)
+![shader-1]({{site.url}}/images/2019-05-07-webgl-view-projection/shader-1.png)
 
 카메라 좌표계로 vertex를 나타낸 후, projection을 적용해 최종 좌표를 얻습니다. 정리하면, vertex의 좌표 벡터에 **모델의 transformation**, **카메라의 inverse transformation**, **카메라의 projection**을 차례로 곱해 나온 좌표를 화면에 표시합니다.
 
@@ -141,7 +139,7 @@ material.stop(defaultShader);
 ...
 ```
 
-### 정육면체 모델
+## 정육면체 모델
 
 지금 우리가 가지고 있는 모델은 사각형 모델 뿐인데, 사각형은 평면도형이라 3D scene에서 보기에는 지루하니 정육면체 모델을 새로 만들어 표시해 봅시다.
 
@@ -190,7 +188,7 @@ const mainLoop = (time: number) => {
 }
 ```
 
-### 결과
+## 결과
 
 [Preview]({{site.url}}/pages/webgl-tutorials/07-view-projection)
 
@@ -198,6 +196,6 @@ const mainLoop = (time: number) => {
 
 > 문제: Preview에서 정육면체가 앞뒤로 움직이는 것처럼 보이는데, 실제로는 정육면체의 위치는 변하지 않습니다. 카메라 설정을 변경하여 이러한 효과를 연출해 보세요.
 
-### 링크
+## 링크
 
 [GitHub Repository](https://github.com/inhibitor1217/webgl-tutorials/tree/master/tutorials/07-view-projection)

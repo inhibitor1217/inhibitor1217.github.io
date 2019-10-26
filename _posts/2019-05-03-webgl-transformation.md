@@ -1,17 +1,15 @@
 ---
 layout: post
-title: "[WebGL] 06. Transformation"
-tags: [WebGL, Modelling]
+title: "06. Transformation"
+tags: [webgl]
 ---
-## Transformation
-
 > [WebGL 튜토리얼 목록]({{site.url}}/1_webgl-tutorials)
 
 지금까지는 화면에 어떤 모델을 그리고 싶을 때, 우리가 작성한 클래스들 중 `Mesh`의 `updateVertexBuffer` 메소드(또는 이 메소드가 이용하는 `gl.bufferData` API)를 사용하여 GPU에 모델의 vertex attribute 데이터를 전달했습니다. 우리가 접하는 많은 그래픽 어플리케이션에서는 매 프레임마다 화면의 물체들이 움직입니다. 하지만 매 프레임마다 새로운 데이터를 GPU에 전달하는 것은 매우 비효율적인 작업일 것입니다. 특히, 모델의 형태 자체가 바뀌는 것이 아니라 단순히 화면 상에서 돌아다닐 뿐이라면, 다른 방법으로 이것을 구현할 수 있지 않을까요?
 
 <!--more-->
 
-### 직사각형 이동시키기
+## 직사각형 이동시키기
 
 CPU에서 GPU에게 모델의 위치를 전달하기 위해 사용할 수 있는 가장 좋은 방법은 uniform variable을 활용하는 것입니다.
 
@@ -45,9 +43,9 @@ defaultShader.setUniform1f('x', 0.3);
 ...
 ```
 
-![uniform-1]({{site.url}}/images/webgl-tutorials-06-transformation-uniform-1.PNG)
+![uniform-1]({{site.url}}/images/2019-05-03-webgl-transformation/uniform-1.png)
 
-### Matrix Transformation
+## Matrix Transformation
 
 물체를 이동시키기 위해 x, y, z 값을 일일이 uniform variable로 shader 프로그램에 전달하는 것 보다 좀 더 일반적인 해결책을 찾아봅시다. 바로 **행렬**과 **일차변환**을 이용하는 방법입니다. 하지만 이 튜토리얼에서 자세한 수학은 다루지 않을 계획입니다. 물체를 이동, 회전하는 연산이 어떻게 행렬로서 표현되는지 궁금하시다면 아래 링크들을 참조하시면 좋을 것 같습니다.
 
@@ -98,7 +96,7 @@ defaultShader.setUniformMatrix4fv('transformation', new Float32Array([
 ]));
 ```
 
-### Transform 클래스
+## Transform 클래스
 
 우리가 직접 변환행렬을 계산하는 것은 불편하므로, 이를 도와주는 NPM module `gl-matrix`를 사용합니다.
 ```
@@ -176,7 +174,7 @@ export default class Transform {
 
 회전을 설정하는 메소드 중 `rotateEulerX`는 x축을 중심으로 `angle`만큼 회전시키는 메소드입니다. 3차원 상에서 물체의 회전 상태를 나타내는 방법은 여러 가지가 있는데, 그 중 x, y, z축을 중심으로 회전한 각도를 **Euler Angle**이라고 합니다. 마찬가지로, `rotateEulerY, rotateEulerZ` 메소드는 각각 y, z축을 중심으로 회전시키는 메소드입니다.
 
-### 어플리케이션에서 Transform 다루기
+## 어플리케이션에서 Transform 다루기
 
 `src/main.ts`에서 렌더링 루프에 들어가기 전 `Transform`을 초기화해줍니다.
 ```typescript
@@ -222,7 +220,7 @@ requestAnimationFrame(mainLoop);
 
 `requestAnimationFrame` 함수의 인자로 넘겨주는 `mainLoop` 함수의 입력으로 시작으로부터 경과한 시간 `time`을 milisecond 단위로 받을 수 있습니다. `mainLoop` 함수 중간에 `transform.setPosition` 메소드를 통해 직사각형을 5초에 한 번 회전하도록 설정합니다. 그 후, 설정한 `transform`의 변환행렬을 `setUniformMatrix4fv` 메소드로 shader 프로그램에 전달합니다.
 
-### 결과
+## 결과
 
 [Preview]({{site.url}}/pages/webgl-tutorials/06-transformation)
 
@@ -230,5 +228,5 @@ requestAnimationFrame(mainLoop);
 
 > Preview page에서, 직사각형의 변 부분 텍스쳐가 깜빡깜빡 거리는 이유는 무엇일까요?
 
-### 링크
+## 링크
 [GitHub Repository](https://github.com/inhibitor1217/webgl-tutorials/tree/master/tutorials/06-transformation)

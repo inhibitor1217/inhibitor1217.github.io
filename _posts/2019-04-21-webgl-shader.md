@@ -1,10 +1,8 @@
 ---
 layout: post
-title: "[WebGL] 04-1. 그래픽스 파이프라인, Shader, GLSL"
-tags: [WebGL, Shader]
+title: "04-1. 그래픽스 파이프라인, Shader, GLSL"
+tags: [webgl, shader]
 ---
-## 그래픽스 파이프라인, Shader, GLSL
-
 > [WebGL 튜토리얼 목록]({{site.url}}/1_webgl-tutorials)
 
 이번 튜토리얼에서는 [전 튜토리얼]({{site.url}}/2019/04/20/webgl-vao)에서 그냥 넘어갔던 코드가 무슨 일을 하는지 자세히 다뤄보도록 하겠습니다. 
@@ -47,7 +45,7 @@ gl.useProgram(program);
 
 > [참고: OpenGL, WebGL 버전과 GLSL 버전](https://en.wikipedia.org/wiki/OpenGL_Shading_Language#Versions)
 
-### 그래픽스 파이프라인 (Graphics Pipeline)
+## 그래픽스 파이프라인 (Graphics Pipeline)
 
 > [OpenGL Wiki - Rendering Pipeline Overview](https://www.khronos.org/opengl/wiki/Rendering_Pipeline_Overview)
 
@@ -55,7 +53,7 @@ gl.useProgram(program);
 
 VAO는 모델의 vertex가 가지고 있는 데이터의 형식을 정의하고, VBO는 실제 데이터를 가지고 있으며, IBO는 vertex가 서로 어떻게 연결되어 삼각형과 같은 primitive를 만드는지 정의합니다. GPU는 VAO, VBO, IBO에 담긴 정보를 **그래픽스 파이프라인**(Graphics Pipeline)을 거쳐 처리하고, 최종 결과를 화면에 표시합니다.
 
-### Shader
+## Shader
 
 > [OpenGL Wiki - Shader](https://www.khronos.org/opengl/wiki/Shader)
 
@@ -67,7 +65,7 @@ VAO는 모델의 vertex가 가지고 있는 데이터의 형식을 정의하고,
 
 그래픽스 파이프라인은 OpenGL이 발전하면서 계속 복잡해져 왔고, 여러 가지 step으로 구성되어 있습니다. 여기에서는 가장 기본이 되는 step들과 우리가 프로그래밍할 수 있는 shader가 어디에 들어갈 수 있는지만 다뤄보도록 하겠습니다.
 
-![pipeline]({{site.url}}/images/04-shader-pipeline.PNG)
+![pipeline]({{site.url}}/images/2019-04-21-webgl-shader/pipeline.png)
 
 - Vertex shader는 파이프라인의 가장 첫 부분으로, VAO와 VBO에 들어있는 데이터를 입력으로 받습니다. Vertex Shader는 각 vertex마다 한 번씩 실행되고, 한 vertex를 처리할 때 다른 vertex에 관한 정보는 접근할 수 없습니다. Vertex shader에서 내보내는 출력은 직접 정할 수 있으며, 이 출력이 그대로 fragement shader의 입력으로 들어옵니다. 또, vertex shader에서 `gl_Position`이라는 고정된 변수를 출력으로 내보냅니다.
 - 필수는 아니지만, Vertex shader에서 처리한 입력을 추가로 처리할 수 있습니다. Tessellation shader와 Geometry shader를 사용하면 되는데, 지금은 다루지 않도록 하겠습니다.
@@ -109,7 +107,7 @@ void main() {
 - Vertex shader에서 입력을 받을 때, `layout(location = 0)`와 같은 선언은 이 입력 변수가 몇 번 vertex attribute에 해당되는지 표시하는 키워드입니다. 앞서 `Mesh` 클래스를 작성할 때, 0번부터 차례로 vertex attribute를 배정했었기 때문에, vertex의 위치가 0번 vertex attribute에 들어있고, 이를 vertex shader에서 받을 수 있습니다. 
 - Fragment shader의 `precision medium float`은 `float`의 정확도를 설정하는 부분으로, 크게 중요하지는 않습니다.
 
-### WebGL에서 shader 사용하기
+## WebGL에서 shader 사용하기
 
 WebGL에서 GLSL 코드를 컴파일하고, vertex shader와 fragment shader를 link하여 파이프라인에 등록하는 API들입니다.
 

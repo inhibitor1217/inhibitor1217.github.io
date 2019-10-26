@@ -2,15 +2,41 @@
 layout: default
 ---
 
+{% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
+<!-- site_tags: {{ site_tags }} -->
+{% assign tag_words = site_tags | split:',' | sort %}
+<!-- tag_words: {{ tag_words }} -->
+
 <div class="post">
-  <h1 class="post-title">{{ page.title }}</h1>
-  <ul class="entry-tags tag-box">
-    {% for tag in page.tags %}
-      <li><a href="{{ site.url }}/4_tags.html#{{ tag | cgi_escape }}">{{ tag }}</a></li>
-    {% endfor %}
-  </ul>
-  <span class="post-date">{{ page.date | date: "%Y년 %-m월 %-d일" }}</span>
-  {{ content }}
+  <div class="post-header">
+      <h1 class="post-title">{{ page.title }}</h1>
+      <span class="post-date">{{ page.date | date: "%Y.%m.%d" }}</span>
+      <ul class="entry-tags tag-box">
+        {% for tag in page.tags %}
+          <li><a href="{{ site.url }}/4_tags.html#{{ tag | cgi_escape }}">#{{ tag }}</a></li>
+        {% endfor %}
+      </ul>
+  </div>
+  <div class="post-wrapper">
+    <div class="post-content">
+      {{ content }}
+    </div>
+    <div>
+      <div class="post-sidebar">
+        <div class="post-toc">
+          {% include toc.html html=content h_max=3 %}
+        </div>
+        <div class="post-tags">
+          <span>All Tags</span>
+          <ul class="tag-box">
+            {% for tag in tag_words %}
+              <li><a href="{{site.url}}/4_tags.html#{{ tag | cgi_escape }}">#{{ tag }} <span>{{ site.tags[tag] | size }}</span></a></li>
+            {% endfor %}
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="related">
@@ -18,12 +44,12 @@ layout: default
   <ul class="related-posts">
     {% for post in site.related_posts limit:3 %}
       <li>
-        <h3>
+        <h4>
           <a href="{{ site.baseurl }}{{ post.url }}">
             {{ post.title }}
-            <small>{{ post.date | date: "%Y년 %-m월 %-d일" }}</small>
+            <small>{{ post.date | date: "%Y.%m.%d" }}</small>
           </a>
-        </h3>
+        </h4>
       </li>
     {% endfor %}
   </ul>

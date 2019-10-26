@@ -1,19 +1,17 @@
 ---
 layout: post
-title: "[WebGL] 09. Specular Lighting, Ambient Lighting"
-tags: [WebGL, Shader, Lighting]
+title: "09. Specular Lighting, Ambient Lighting"
+tags: [webgl, shader]
 ---
-## Specular Lighting, Ambient Lighting
-
 > [WebGL 튜토리얼 목록]({{site.url}}/1_webgl-tutorials)
 
 [전 튜토리얼]({{site.url}}/2019/05/10/webgl-diffuse-lighting)에서는 가장 기본이 되는 shading 알고리즘 중 diffuse reflection(난반사)를 근사하여 표현하는 Lambertian model에 대해 알아보고, 이를 구현하는 GLSL 코드를 작성해 보았습니다. 이번 튜토리얼에서는 specular reflection(정반사)를 표현하는 모델들과 ambient lighting에 관해 알아보고, 마찬가지로 GLSL shader 프로그램으로 이를 구현해 보도록 하겠습니다.
 
 <!--more-->
 
-### Specular Lighting
+## Specular Lighting
 
-![specular-1]({{site.url}}/images/webgl-specular-lighting-specular-1.PNG)
+![specular-1]({{site.url}}/images/2019-05-18-webgl-specular-lighting/specular-1.png){: .center-image}
 
 [Wikipedia - Specular Highlight](https://en.wikipedia.org/wiki/Specular_highlight)
 
@@ -29,7 +27,7 @@ $$I_{d} = k_{d} i_l (\hat{N} \cdot \hat{L} )$$
 
 Specular lighting에 의해 반사된 빛은 특정 방향에서만 볼 수 있으므로, 빛의 입사 방향($$\hat{L}$$)과 표면의 법선 방향($$\hat{N}$$), 그리고 **카메라가 어떤 방향에서 물체를 보고 있는지**($$\hat{V}$$)에 따라 얼마나 반사된 빛을 볼 수 있는지 결정됩니다.
 
-#### Specular Lighting - Phong model
+### Specular Lighting - Phong model
 
 $$I_{s} = k_{s} i_l (\hat{R} \cdot \hat{V})^{n}$$
 
@@ -41,10 +39,10 @@ $$\hat{R} = 2(\hat{N} \cdot \hat{L})\hat{N} - \hat{L}$$
 
 | $$n=10$$ | $$n = 25$$ | $$n = 50$$ |
 |   :-:    |    :-:     |    :-:     |
-| ![phong-1]({{site.url}}/images/webgl-specular-lighting-phong-1.PNG) | ![phong-2]({{site.url}}/images/webgl-specular-lighting-phong-2.PNG) | ![phong-3]({{site.url}}/images/webgl-specular-lighting-phong-3.PNG) |
+| ![phong-1]({{site.url}}/images/2019-05-18-webgl-specular-lighting/phong-1.png) | ![phong-2]({{site.url}}/images/2019-05-18-webgl-specular-lighting/phong-2.png) | ![phong-3]({{site.url}}/images/2019-05-18-webgl-specular-lighting/phong-3.png) |
 
 
-#### Specular Lighting - Blinn-Phong model
+### Specular Lighting - Blinn-Phong model
 
 Blinn-Phong model은 그냥 Phong model과 비슷하지만 $$\hat{R}$$을 직접 계산하는 대신 다른 방법을 사용합니다. $$\hat{H}$$를 $$\hat{V}$$와 $$\hat{L}$$의 중간 방향이라고 하면, $$\hat{R}$$과 $$\hat{V}$$ 사이 각도는 $$\hat{N}$$과 $$\hat{H}$$ 사이 각도의 2배가 됩니다. (직접 그림을 그려 확인해 보세요!) 따라서 Phong model의 식을 아래 식으로 대충 근사할 수 있습니다.
 
@@ -52,7 +50,7 @@ $$I_{s} = k_{s} i_l (\hat{H} \cdot \hat{N})^{n'}$$
 
 $$\hat{R}$$을 계산하는 것보다 $$\hat{H}$$를 계산하는 것이 빠르므로 더 효율적인 방법입니다.
 
-### GLSL shader에서 specular lighting 구현하기
+## GLSL shader에서 specular lighting 구현하기
 
 Specular lighting을 구현하기 위해서는 빛의 세기를 계산하는 fragment shader에서 $$\hat{V}$$를 알고 있어야 합니다. $$\hat{V}$$는 물체에서 카메라를 향하는 벡터로, vertex shader에서 계산할 수 있습니다. Vertex shader의 output으로 $$\hat{V}$$를 내보내도록 수정합니다.
 
@@ -130,7 +128,7 @@ float specular_factor = pow( clamp( dot(n_half_angle_direction, n_world_normal),
 ...
 ```
 
-### Ambient Lighting
+## Ambient Lighting
 
 창문이 하나 뿐인 방에 햇빛이 들어오고 있다고 생각해 봅시다. 물론 햇빛이 직접 비치는 부분이 제일 밝겠지만, 햇빛이 직접 비치지 않는 부분도 아예 보이지 않는 것이 아니라 어둡게나마 볼 수 있습니다. 이는 햇빛이 창문을 통해 방에 들어온 후, 여러 차례 벽과 바닥에 반사되어 이 빛을 볼 수 있기 때문입니다. 컴퓨터 그래픽스에서는 빛이 여러 차례 반사되는 과정을 일일이 계산할 수 없기 때문에, 이처럼 광원이 직접 비치지 않아도 우리 눈에 (또는 가상 카메라에) 들어오는 빛을 **주변광**(ambient light)이라고 합니다. 실제로 빛이 여러 가지 물체에 반사되는 과정을 시뮬레이션하는 알고리즘도 존재합니다만, 복잡하고 많은 최적화가 필요하기 때문에 여기에서는 매우 간단한 ambient lighting 모델을 사용합니다.
 
@@ -162,7 +160,7 @@ void main() {
 
 `out_color`를 계산할 때 diffuse, specular lighting에 의해 들어오는 빛에 더해 ambient lighting에 의한 빛까지 고려하여 계산하면 됩니다.
 
-### Material 클래스 업데이트
+## Material 클래스 업데이트
 
 지금까지 살펴보았듯, 가상 카메라에 들어오는 물체의 밝기와 색깔은 **물체 자체의 특성**과 **광원의 특성**에 의해 결정됩니다. Fragment shader에서 사용하는 상수들 중, `diffuse_color`, `diffuse_intensity` 등은 물체 자체의 특성이고, `light_color`, `light_intensity` 와 같은 변수들은 광원의 특성입니다. 광원은 이후 튜토리얼에서 엔진에 추가하도록 하고, 여기에서는 물체의 특성을 어플리케이션에서 직접 결정할 수 있도록 `Material` 클래스를 수정하도록 하겠습니다.
 
@@ -217,7 +215,7 @@ start(program: Program): void {
 ...
 ```
 
-### 결과
+## 결과
 
 어플리케이션에서 `material`의 attribute들을 조절하여 여러 가지 효과를 연출해 보세요. 시간에 따라 `color`나 `intensity` 값을 조절하는 것도 가능합니다.
 
@@ -238,6 +236,6 @@ const mainLoop = (time: number) => {
 
 [Preview]({{site.url}}/pages/webgl-tutorials/09-specular-lighting)
 
-### 링크
+## 링크
 
 [GitHub Repository](https://github.com/inhibitor1217/webgl-tutorials/tree/master/tutorials/09-specular-lighting)
