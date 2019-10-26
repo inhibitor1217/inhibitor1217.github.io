@@ -82,36 +82,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 @media (min-width: 56em) {
   .container {
-    max-width: 38rem;
+    max-width: 44rem;
   }
-}
-
-
-/*
- * Masthead
- *
- * Super small header above the content for site name and short description.
- */
-
-.masthead {
-  padding-top:    1rem;
-  padding-bottom: 1rem;
-  margin-bottom: 3rem;
-  border-bottom: 1px solid #eee;
-}
-.masthead-title {
-  margin-top: 0;
-  margin-bottom: 0;
-  color: #505050;
-}
-.masthead-title a {
-  color: #505050;
-}
-.masthead-title small {
-  font-size: 75%;
-  font-weight: 400;
-  color: #c0c0c0;
-  letter-spacing: 0;
 }
 
 @media (max-width: 48em) {
@@ -309,11 +281,9 @@ a.sidebar-nav-item:focus {
 
 .page,
 .post {
-  margin-bottom: 4em;
-  padding: 1rem;
-  background-color: #ffffff;
-  border-radius: 6px;
-  box-shadow: 0 3px 3px 0px #9a9a9a33;
+  margin-bottom: 1em;
+  padding: 1rem 0;
+  border-bottom: 1px solid #c0c0c0;
 }
 
 /* Blog post or page title */
@@ -324,22 +294,17 @@ a.sidebar-nav-item:focus {
 }
 .page-title,
 .post-title {
-  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
 /* Meta data line below post title */
 .post-date {
   display: block;
-  margin: .5rem 0 2rem 0;
   color: #9a9a9a;
 }
 
-.post-footer {
-  padding-top: 1rem;
-  border-top: 1px #9a9a9a solid;
-}
 .post-footer p {
-  font-size: 16px;
+  font-size: 14px;
   text-align: right;
 }
 
@@ -607,4 +572,35 @@ a.pagination-item:hover {
 /* Only one tweak for a reverse layout */
 .layout-reverse.sidebar-overlay #sidebar-checkbox:checked ~ .sidebar {
   box-shadow: -.25rem 0 .5rem rgba(0,0,0,.1);
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  margin: 3rem 0;
+}
+
+.about-logo img {
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+}
+
+.about-links {
+  margin: 1rem 0;
+}
+
+.about h1 {
+  margin: 0;
+  padding: .5rem 1rem;
+  font-size: 28px;
+}
+
+.about h2 {
+  margin: 0;
+  padding: .5rem;
+  color: #777;
+  font-size: 16px;
 }
