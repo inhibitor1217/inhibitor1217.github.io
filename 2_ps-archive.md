@@ -11,7 +11,8 @@ title: "Problem Solving"
 - [드래프트 (draft) - USACO 2009 November]({{site.url}}/2019/07/07/ps-draft)
 - [옥상 정원 꾸미기 (rooftop) - USACO 2006 November]({{site.url}}/2019/07/31/ps-rooftop)
 - [전깃줄 I (wire) - KOI 지역본선 2007 초등]({{site.url}}/2019/10/27/ps-wire1) 
-- [전깃줄 II (wire) - KOI 지역본선 2007 초등]({{site.url}}/2019/10/27/ps-wire2) 
+- [전깃줄 II (wire) - KOI 지역본선 2007 초등]({{site.url}}/2019/10/27/ps-wire2)
+- [내리막길 (downhill) - KOI 지역본선 2006 고등]({{site.url}}/2019/11/09/ps-downhill)
 
 ### Topics
 - [Union-Find (Disjoint set) 자료구조]({{site.url}}/2019/04/25/ps-union-find)
