@@ -1,4 +1,2 @@
 ## inhibitor.log
-
-### Tutorials
-- [[WebGL] 튜토리얼](_posts/2019-04-19-webgl-tutorials.md)
+[Go to Page](https://inhibitor1217.github.io)
