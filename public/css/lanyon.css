@@ -326,7 +326,7 @@ a.sidebar-nav-item:focus {
 .post-sidebar {
   position: -webkit-sticky;
   position: sticky;
-  top: 75px;
+  top: 100px;
   display: block;
 }
 
@@ -341,7 +341,7 @@ a.sidebar-nav-item:focus {
 }
 
 .post-tags {
-  margin-top: 4rem;
+  margin-top: 2rem;
   padding-left: 24px;
 }
 
